@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - billaviluxe Cosmetics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #D4AF37;
+            --accent-color: #FFD700;
+            --light-color: #f8f8f8;
+            --dark-color: #222222;
+            --text-color: #333333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #777777;
+            --gold: #c9a227;
+            --light-gold: #e6c35c;
+            --white: #f8f8f8;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background-color: white;
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            transition: var(--transition);
+        }
+
+        .main-header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin: 0;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            color: darkgray;
+            letter-spacing: 1px;
+            font-weight: 300;
+            margin-bottom: -10px;
+        }
+
+
+        .mobile-menu-btn {
+     display: none;
+     background: none;
+     border: none;
+     color: var(--gold);
+     font-size: 1.5rem;
+     cursor: pointer;
+ }
+        .main-nav ul {
+            display: flex;
+            gap: 2vw;
+            list-style: none;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: rgba(0, 0, 0, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            transition: width 0.4s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--dark-color);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .cart-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+        }
+
+        .cart-link i {
+            font-size: 1.1rem;
+            color: rgba(0, 0, 0, 0.9);
+            transition: var(--transition);
+        }
+
+        .cart-count {
+            background: var(--gold);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        /* Checkout Page Styles */
+        .checkout-section {
+            padding: 80px 0;
+            min-height: 70vh;
+        }
+
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+        }
+
+        .checkout-form, .order-summary {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .order-summary {
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .phone-input {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .phone-input .prefix {
+            padding: 0 12px;
+            background: #f5f5f5;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            border-right: 1px solid var(--medium-gray);
+        }
+
+        .phone-input input {
+            flex: 1;
+            border: none;
+            padding: 12px;
+        }
+
+        .hint {
+            display: block;
+            margin-top: 5px;
+            color: var(--dark-gray);
+            font-size: 0.8rem;
+        }
+
+        .payment-methods {
+            margin: 25px 0;
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .payment-option {
+            padding: 15px;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .payment-option:hover {
+            background-color: var(--light-gray);
+        }
+
+        .payment-option:last-child {
+            border-bottom: none;
+        }
+
+        .payment-option input {
+            margin-right: 10px;
+        }
+
+        .payment-option.coming-soon {
+            background-color: #f9f9f9;
+            color: var(--dark-gray);
+            cursor: not-allowed;
+        }
+
+        .payment-option[for="whatsapp"] {
+            background-color: #f8f8f8;
+            color: black;
+            border-radius: 4px;
+        }
+
+        .payment-option[for="whatsapp"]:hover {
+            background-color: #128C7E;
+            color: white;
+        }
+
+        .cash-notice {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color);
+        }
+
+        .cash-notice i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .order-items {
+            margin-bottom: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-image {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-details h4 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .item-details p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .item-total {
+            font-weight: 600;
+        }
+
+        .order-totals {
+            border-top: 1px solid var(--medium-gray);
+            padding-top: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .summary-row.total {
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-top: 1px solid var(--medium-gray);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 30px;
+            color: var(--dark-gray);
+        }
+
+        .empty-cart-message i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--medium-gray);
+        }
+
+        /* Footer Styles */
+        .main-footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Alert Styles */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .custom-alert-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            transform: translateY(-20px);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .alert-content {
+            text-align: center;
+        }
+
+        .alert-icon {
+            width: 48px;
+            height: 48px;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        .alert-title {
+            color: #2c3e50;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .alert-message {
+            color: #666;
+            line-height: 1.6;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .alert-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .alert-button:hover {
+            background: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 30px;
+                transition: all 0.4s ease;
+            }
+            
+            .main-nav.active {
+                left: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .main-nav a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                color: white;
+            }
+
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-summary {
+                position: static;
+                margin-top: 40px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+     <header class="main-header" id="mainHeader">
+      <div class="container">
+          <div class="header-content">
+              <div class="logo">
+                  <h1>billaviluxe</h1>
+                  <span>Cosmetics</span>
+              </div>
+              
+              <!-- Mobile Menu Button -->
+              <button class="mobile-menu-btn" id="menuBtn">
+                  <i class="fas fa-bars"></i>
+              </button>
+              
+              <!-- Navigation -->
+              <nav class="main-nav" id="mainNav">
+                  <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="#products">Products</a></li>
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                      <li>
+                          <a href="cart.html" class="cart-link">
+                              <i class="fas fa-shopping-cart"></i>
+                              <span class="cart-count">0</span>
+                          </a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </header>
+    <section class="checkout-section">
+        <div class="container">
+            <h2 class="section-title">Checkout</h2>
+            
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h3>Delivery Information</h3>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <div class="phone-input">
+                                <span class="prefix">+212</span>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" title="Please enter a 9-digit Moroccan phone number" required placeholder="6XX XXX XXX">
+                            </div>
+                            <small class="hint">Enter your 9-digit phone number (without +212)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <select id="city" name="city" required>
+                                <option value="">Select your city</option>
+                                <option value="Casablanca">Casablanca</option>
+                                <option value="Rabat">Rabat</option>
+                                <option value="Marrakech">Marrakech</option>
+                                <option value="Fes">Fes</option>
+                                <option value="Tangier">Tangier</option>
+                                <option value="Agadir">Agadir</option>
+                                <option value="Meknes">Meknes</option>
+                                <option value="Oujda">Oujda</option>
+                                <option value="Kenitra">Kenitra</option>
+                                <option value="Tetouan">Tetouan</option>
+                                <option value="Safi">Safi</option>
+                                <option value="El Jadida">El Jadida</option>
+                                <option value="Beni Mellal">Beni Mellal</option>
+                                <option value="Nador">Nador</option>
+                                <option value="Taza">Taza</option>
+                                <option value="Khouribga">Khouribga</option>
+                                <option value="Mohammedia">Mohammedia</option>
+                                <option value="Laayoune">Laayoune</option>
+                                <option value="Dakhla">Dakhla</option>
+                                <option value="Essaouira">Essaouira</option>
+                                <option value="Tiznit">Tiznit</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="street">Street *</label>
+                            <input type="text" id="street" name="street" required placeholder="Street name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="home-number">Home Number *</label>
+                            <input type="text" id="home-number" name="home-number" required placeholder="Building number">
+                        </div>
+                        
+                        <h3>Payment Method</h3>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-option" for="whatsapp">
+                                <input type="radio" id="whatsapp" name="payment" value="whatsapp">
+                                <label for="whatsapp">Order via WhatsApp</label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="cash" name="payment" value="cash" checked>
+                                <label for="cash">Cash on Delivery</label>
+                            </div>
+                            
+                            <div class="payment-option coming-soon">
+                                <input type="radio" id="credit-card" name="payment" value="credit-card" disabled>
+                                <label for="credit-card">Credit Card (Coming Soon)</label>
+                            </div>
+                            <div class="payment-option coming-soon">
+                                <input type="radio" id="bank-transfer" name="payment" value="bank-transfer" disabled>
+                                <label for="bank-transfer">Bank Transfer (Coming Soon)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="cash-notice">
+                            <p><i class="fas fa-info-circle"></i> You will pay in cash when you receive your order</p>
+                        </div>
+                        
+                        <button type="submit" class="btn place-order-btn">Complete Order</button>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Your Order</h3>
+                    <div class="order-items" id="order-items">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    
+                    <div class="order-totals">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="order-subtotal">0.00 DH</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="order-shipping">5.99 DH</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="order-total">0.00 DH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Professional Alert HTML -->
+    <div class="custom-alert-overlay" id="professional-alert" aria-hidden="true">
+        <div class="custom-alert-box" role="dialog" aria-modal="true">
+            <div class="alert-content">
+                <svg class="alert-icon" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/>
+                </svg>
+                <h3 class="alert-title">Order Received!</h3>
+                <p class="alert-message" id="alert-message">We've received your order! Please check your WhatsApp to complete the payment.</p>
+                <div class="alert-actions">
+                    <button class="alert-button" id="alert-button">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BILLAVILUXE Cosmetics</h3>
+                    <p>Premium beauty products for the modern, sophisticated individual.</p>
+                </div>
+                <div class="footer-section">
+                 <!--   <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>-->
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+    <a href="https://www.facebook.com/BILLAVILUXE" target="_blank" rel="noopener noreferrer" class="social-link">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank" rel="noopener noreferrer" class="social-link">
+        <i class="fab fa-instagram"></i>
+    </a> 
+            <a href="https://wa.me/212630339238" target="_blank" rel="noopener noreferrer" class="social-link">
+     <i class="fab fa-whatsapp"></i>
+ </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Billaviluxe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            BUSINESS: {
+                NAME: "billaviluxe Cosmetics",
+                PHONE: "212698779960",
+                CURRENCY: "DH",
+                WHATSAPP_API_KEY: "8940735" // For COD orders
+            },
+            SHIPPING: 5.99
+        };
+
+        // Cart Manager
+        class CartManager {
+            static getCart() {
+                return JSON.parse(localStorage.getItem('cart')) || [];
+            }
+
+            static getCartTotal() {
+                const cart = this.getCart();
+                return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            }
+
+            static getCartCount() {
+                const cart = this.getCart();
+                return cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+
+            static clearCart() {
+                localStorage.removeItem('cart');
+                this.updateCartUI();
+            }
+
+            static updateCartUI() {
+                const count = this.getCartCount();
+                document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+            }
+        }
+
+        // Professional Alert System
+        class AlertSystem {
+            static show(config) {
+                const alert = document.getElementById('professional-alert');
+                const title = alert.querySelector('.alert-title');
+                const message = alert.querySelector('.alert-message');
+                const button = alert.querySelector('.alert-button');
+                
+                title.textContent = config.title;
+                message.textContent = config.message;
+                
+                button.onclick = () => {
+                    this.hide();
+                    if (config.onClose) config.onClose();
+                };
+
+                alert.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                button.focus();
+            }
+
+            static hide() {
+                const alert = document.getElementById('professional-alert');
+                alert.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Order Processor
+        class OrderProcessor {
+            static async process(e) {
+                e.preventDefault();
+                const submitBtn = document.querySelector('.place-order-btn');
+                
+                try {
+                    const formData = this.getFormData();
+                    this.validateForm(formData);
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    
+                    if (formData.paymentMethod === 'cash') {
+                        // Cash on delivery - use CallMeBot API
+                        await this.sendCODNotification(formData);
+                        
+                        AlertSystem.show({
+                            title: "COD Order Received!",
+                            message: "We've received your cash on delivery order!",
+                            onClose: () => {
+                                CartManager.clearCart();
+                                window.location.href = `thank-you.html?order=${formData.orderNumber}`;
+                            }
+                        });
+                    } else if (formData.paymentMethod === 'whatsapp') {
+                        // WhatsApp order - open WhatsApp directly
+                        this.processWhatsAppOrder(formData);
+                    }
+                    
+                } catch (error) {
+                    console.error('Order Error:', error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Complete Order';
+                    AlertSystem.show({
+                        title: "Order Issue",
+                        message: error.message || "Please check your order details",
+                    });
+                }
+            }
+            
+            static getFormData() {
+                const cart = CartManager.getCart();
+                
+                return {
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    city: document.getElementById('city').value.trim(),
+                    street: document.getElementById('street').value.trim(),
+                    homeNumber: document.getElementById('home-number').value.trim(),
+                    paymentMethod: document.querySelector('input[name="payment"]:checked').value,
+                    orderNumber: 'LX-' + Date.now().toString().slice(-6),
+                    items: cart
+                };
+            }
+
+            static validateForm(formData) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+                if (!emailRegex.test(formData.email)) throw new Error('Please enter a valid email address');
+                if (formData.phone.length !== 9) throw new Error('Phone number must be 9 digits');
+                if (!formData.city || !formData.street || !formData.homeNumber) {
+                    throw new Error('Please fill all address fields');
+                }
+                if (formData.items.length === 0) {
+                    throw new Error('Your cart is empty');
+                }
+            }
+
+            static async sendCODNotification(formData) {
+                try {
+                    const message = this.createWhatsAppMessage(formData);
+                    const apiUrl = `https://api.callmebot.com/whatsapp.php?phone=${CONFIG.BUSINESS.PHONE}&text=${encodeURIComponent(message)}&apikey=${CONFIG.BUSINESS.WHATSAPP_API_KEY}`;
+                    
+                    // Try API first
+                    await fetch(apiUrl);
+                } catch (error) {
+                    console.error('COD Notification Error:', error);
+                }
+            }
+            
+            static processWhatsAppOrder(formData) {
+                const message = this.createWhatsAppMessage(formData);
+                const whatsappUrl = `https://wa.me/${CONFIG.BUSINESS.PHONE}?text=${encodeURIComponent(message)}`;
+                
+                AlertSystem.show({
+                    title: "Redirecting to WhatsApp",
+                    message: "Please complete your order by sending the pre-filled message on WhatsApp.",
+                    onClose: () => {
+                        // Open WhatsApp in a new tab
+                        window.open(whatsappUrl, '_blank');
+                        // Clear cart and redirect to thank you page
+                        CartManager.clearCart();
+                        window.location.href = `thank-you.html?order=${formData.orderNumber}`;
+                    }
+                });
+            }
+            
+            static createWhatsAppMessage(formData) {
+                const itemsText = formData.items.map(item =>
+                    `➤ ${item.name} (${item.quantity}x) - ${(item.price * item.quantity).toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}`
+                ).join('%0A');
+                
+                const subtotal = formData.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const total = subtotal + CONFIG.SHIPPING;
+                
+                return `*NEW ORDER - ${CONFIG.BUSINESS.NAME}*%0A%0A` +
+                    `*Order #:* ${formData.orderNumber}%0A` +
+                    `*Payment Method:* ${formData.paymentMethod.toUpperCase()}%0A` +
+                    `*Email:* ${formData.email}%0A` +
+                    `*Phone:* +212${formData.phone}%0A` +
+                    `*Address:* ${formData.street} No.${formData.homeNumber}, ${formData.city}%0A%0A` +
+                    `*Items:*%0A${itemsText}%0A%0A` +
+                    `*Subtotal:* ${subtotal.toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}%0A` +
+                    `*Shipping:* ${CONFIG.SHIPPING.toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}%0A` +
+                    `*Total:* ${total.toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}`;
+            }
+        }
+
+        // UI Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu
+            const menuBtn = document.getElementById('menuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (menuBtn && mainNav) {
+                menuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    menuBtn.innerHTML = mainNav.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
+            }
+
+            // Phone Input Formatting
+            document.getElementById('phone').addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '').slice(0, 9);
+            });
+
+            // Update cart UI
+            CartManager.updateCartUI();
+            
+            // Render cart items
+            function renderCartItems() {
+                const cart = CartManager.getCart();
+                const orderItemsContainer = document.getElementById('order-items');
+                const subtotalElement = document.getElementById('order-subtotal');
+                const totalElement = document.getElementById('order-total');
+                
+                // Clear existing items
+                orderItemsContainer.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    orderItemsContainer.innerHTML = `
+                        <div class="empty-cart-message">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>Your cart is empty</p>
+                        </div>
+                    `;
+                    subtotalElement.textContent = '0.00 DH';
+                    totalElement.textContent = '0.00 DH';
+                    return;
+                }
+                
+                // Add cart items to order summary
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'order-item';
+                    itemElement.innerHTML = `
+                        <div class="item-image">
+                            <i class="${item.icon}" style="color: #d4af37; font-size: 24px;"></i>
+                        </div>
+                        <div class="item-details">
+                            <h4>${item.name}</h4>
+                            <p>${item.variant || ''}</p>
+                        </div>
+                        <div class="item-total">${(item.price * item.quantity).toFixed(2)} DH</div>
+                    `;
+                    orderItemsContainer.appendChild(itemElement);
+                });
+                
+                // Calculate totals
+                const subtotal = CartManager.getCartTotal();
+                const total = subtotal + CONFIG.SHIPPING;
+                
+                // Update totals in the UI
+                subtotalElement.textContent = subtotal.toFixed(2) + ' DH';
+                totalElement.textContent = total.toFixed(2) + ' DH';
+            }
+            
+            // Render cart on page load
+            renderCartItems();
+            
+            // Form submission
+            document.getElementById('checkout-form').addEventListener('submit', (e) => OrderProcessor.process(e));
+        });
+    </script>
+</body>
+</html>
