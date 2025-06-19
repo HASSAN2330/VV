@@ -83,6 +83,27 @@ document.addEventListener('DOMContentLoaded', function() {
     '20+ shades available'
   ]
 },
+   {
+    id: '7',
+    name: 'Crème Solaire Multifonction SPF 50+',
+    price: 29.99,
+    image: 'images/hh.jpg',
+    gallery: [
+      'images/BILLAVILUXE.zip',
+      'images/DSC00089.jpg',
+      'images/DSC00045_ff684f91-e8de-4d1c-b19c-210952c3f7b6.jpg',
+      'images/hh.jpg'
+    ],
+    description: 'avec des filtres solaires chimiques, se fond sans effort dans toutes les carnations et offre une sensation de légèreté. Il offre une protection SPF 50 et laisse un fini rosé et éclatant. Elle se présente dans un format pratique de 50 ml pour une application et un transport aisés.',
+    details: [
+      'Sétale facilement',
+      'Pas de boulochage',
+      'Pas de traces blanches',
+      'Non grasse',
+      'Ne pique pas les yeux',
+      'Fonctionne bien sous le maquillage'
+    ]
+  },
 ];
   
   // ======================
