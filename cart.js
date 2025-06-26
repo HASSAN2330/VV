@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const showToast = (message, type = 'success') => {
     const toastMessage = toast.querySelector('.toast-message');
     toastMessage.textContent = message;
-    toast.className = `toast-notification ${type}`;
+    toast.className = toast-notification ${type};
     void toast.offsetWidth; // Trigger reflow
     toast.classList.add('active');
     setTimeout(() => toast.classList.remove('active'), 3000);
@@ -22,89 +22,67 @@ document.addEventListener('DOMContentLoaded', function() {
   // ======================
   //  Product Database
   // ======================
- const products = [
-  {
-    id: '1',
-    name: 'Crème Solaire Multifonction SPF 50+',
-    price: 29.99,
-    image: 'images/hh.jpg',
-    gallery: [
-      'images/scene_006_v3.jpg',
-      'images/DSC00089.jpg',
-      'images/DSC00045_ff684f91-e8de-4d1c-b19c-210952c3f7b6.jpg',
-      'images/hh.jpg'
-    ],
-    description: 'avec des filtres solaires chimiques, se fond sans effort dans toutes les carnations et offre une sensation de légèreté. Il offre une protection SPF 50 et laisse un fini rosé et éclatant. Elle se présente dans un format pratique de 50 ml pour une application et un transport aisés.',
-    details: [
-      'Sétale facilement',
-      'Pas de boulochage',
-      'Pas de traces blanches',
-      'Non grasse',
-      'Ne pique pas les yeux',
-      'Fonctionne bien sous le maquillage'
-    ]
-  },
-  // Add similar structure for other products
-  {
-  id: '2',
-  name: 'Lipstick',
-  price: 29.99,
-  image: 'images/th.jpg',
-  gallery: [
-    'images/lipstick-angle1.jpg',
-    'images/th.jpg',
-    'images/lipstick-package.jpg',
-    'images/lipstick-swatches.jpg'
-  ],
-  description: 'Luxurious matte finish with long-lasting color',
-  details: [
-    'Weight: 3.2g',
-    'Matte finish',
-    'Vegan formula',
-    '20+ shades available'
-  ]
-},
-{
-  id: '3',
-  name: 'Velvet Matte Lipstick',
-  price: 114.99,
-  image: 'images/thr.jpg',
-  gallery: [
-    'images/lipstick-angle1.jpg',
-    'images/th.jpg',
-    'images/lipstick-package.jpg',
-    'images/lipstick-swatches.jpg'
-  ],
-  description: 'Luxurious matte finish with long-lasting color',
-  details: [
-    'Weight: 3.2g',
-    'Matte finish',
-    'Vegan formula',
-    '20+ shades available'
-  ]
-},
-   {
-    id: '7',
-    name: 'Crème Solaire Multifonction SPF 50+',
-    price: 29.99,
-    image: 'images/hh.jpg',
-    gallery: [
-      'images/BILLAVILUXE.zip',
-      'images/DSC00089.jpg',
-      'images/DSC00045_ff684f91-e8de-4d1c-b19c-210952c3f7b6.jpg',
-      'images/hh.jpg'
-    ],
-    description: 'avec des filtres solaires chimiques, se fond sans effort dans toutes les carnations et offre une sensation de légèreté. Il offre une protection SPF 50 et laisse un fini rosé et éclatant. Elle se présente dans un format pratique de 50 ml pour une application et un transport aisés.',
-    details: [
-      'Sétale facilement',
-      'Pas de boulochage',
-      'Pas de traces blanches',
-      'Non grasse',
-      'Ne pique pas les yeux',
-      'Fonctionne bien sous le maquillage'
-    ]
-  },
-];
+  const products = [
+    {
+      id: '1',
+      name: 'Crème Solaire Multifonction SPF 50+',
+      price: 289.00,
+      image: 'images/hh.jpg',
+      gallery: [
+        'images/scene_006_v3.jpg',
+        'images/DSC00089.jpg',
+        'images/DSC00045_ff684f91-e8de-4d1c-b19c-210952c3f7b6.jpg',
+        'images/hh.jpg'
+      ],
+      description: 'avec des filtres solaires chimiques, se fond sans effort dans toutes les carnations et offre une sensation de légèreté. Il offre une protection SPF 50 et laisse un fini rosé et éclatant. Elle se présente dans un format pratique de 50 ml pour une application et un transport aisés.',
+      details: [
+        'Sétale facilement',
+        'Pas de boulochage',
+        'Pas de traces blanches',
+        'Non grasse',
+        'Ne pique pas les yeux',
+        'Fonctionne bien sous le maquillage'
+      ]
+    },
+    /* p2 */
+    {
+      id: '2',
+      name: 'Huile Fortifiante Ongles & Cuticules',
+      price: 139.00,
+      image: 'images/AISelect_20250624_015646_OneDrive.jpg',
+      gallery: [
+        'images/AISelect_20250624_015720_OneDrive.jpg'
+      ],
+      description: '🌿 Huile Fortifiante Ongles & Cuticules – 100% Naturelle Offrez à vos ongles la cure naturelle qu’ils méritent ! Notre Huile Fortifiante pour Ongles & Cuticules est une formule précieuse, riche en huile de ricin, huile d’amande douce, et huile essentielle de citron. Un mélange 100% naturel pour renforcer, hydrater, et embellir vos ongles et cuticules dès la première application.',
+
+    
+      details: [
+  '•	Renforce la structure des ongles cassants et secs',
+	'•	Hydrate et nourrit en profondeur les cuticulse',
+	'•	Stimule la pousse des ongles grâce à l’huile de ricin',
+	'•	Laisse un parfum frais et délicat de citron',
+      ]
+    },
+    /* p3 */
+        {
+      id: '3',
+      name: 'RAMCHA Eyelash Serum',
+      price: 139.00,
+      image: 'images/rm2.jpg',
+      gallery: [
+        'images/rm2.jpg'
+      ],
+      description: 'For Longer, Thicker & Healthier Lashes & Brows Discover the power of nature with RAMCHA Eyelash Serum, expertly crafted to nourish and strengthen your lashes and eyebrows.Infused with a luxurious blend of plant - based oils, this serum promotes natural growth, reduces breakage, and adds a soft, healthy shine.',
+      
+      
+      details: [
+        '•Stimulates natural lash and brow growth', 
+         '•Strengthens hair follicles and reduces thinning',
+         '•Deeply moisturizes with no irritation',
+         '•Gentle for daily use on sensitive areas',
+      ]
+    },
+  ];
   
   // ======================
   //  Cart System
@@ -149,11 +127,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // ======================
   //  Product Rendering
   // ======================
- function renderProducts() {
-  const productGrid = document.querySelector('.product-grid');
-  if (!productGrid) return;
-  
-  productGrid.innerHTML = products.map(product => `
+  function renderProducts() {
+    const productGrid = document.querySelector('.product-grid');
+    if (!productGrid) return;
+    
+    productGrid.innerHTML = products.map(product => `
       <div class="product-card" data-id="${product.id}">
         <img src="${product.image}" alt="${product.name}">
         <h3>${product.name}</h3>
@@ -170,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.product-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (!e.target.closest('.add-to-cart')) {
-          window.location.href = `product-details.html?id=${card.dataset.id}`;
+          window.location.href = product-details.html?id=${card.dataset.id};
         }
       });
     });
@@ -180,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', () => {
         const product = products.find(p => p.id === button.dataset.id);
         cartActions.add(product);
-        showToast(`${product.name} added to cart 🛒`, 'success');
+        showToast(${product.name} added to cart 🛒, 'success');
       });
     });
   }
@@ -225,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
           item.quantity + 1 : item.quantity - 1;
         
         cartActions.updateQuantity(item.id, newQuantity);
-        showToast(`${item.name} quantity updated to ${newQuantity}`, 'info');
+        showToast(${item.name} quantity updated to ${newQuantity}, 'info');
       });
     });
     
@@ -233,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', () => {
         const item = cart.find(item => item.id === button.dataset.id);
         cartActions.remove(item.id);
-        showToast(`${item.name} removed from cart`, 'warning');
+        showToast(${item.name} removed from cart, 'warning');
       });
     });
   };
@@ -242,9 +220,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const shipping = subtotal > 0 ? 5.99 : 0;
     
-    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)}DH`;
-    document.getElementById('shipping').textContent = `${shipping.toFixed(2)}DH`;
-    document.getElementById('total').textContent = `${(subtotal + shipping).toFixed(2)}DH`;
+    document.getElementById('subtotal').textContent = ${subtotal.toFixed(2)}DH;
+    document.getElementById('shipping').textContent = ${shipping.toFixed(2)}DH;
+    document.getElementById('total').textContent = ${(subtotal + shipping).toFixed(2)}DH;
   };
   
   // ======================
