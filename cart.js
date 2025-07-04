@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: '1',
       name: 'Crème Solaire Multifonction SPF 50+',
-      price: 289.00,
+      price: 289.00MAD,
       image: 'images/hh.jpg',
       gallery: [
         'images/scene_006_v3.jpg',
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: '2',
       name: 'Huile Fortifiante Ongles & Cuticules',
-      price: 139.00,
+      price: 139.00MAD,
       image: 'images/AISelect_20250624_015646_OneDrive.jpg',
       gallery: [
         'images/AISelect_20250624_015720_OneDrive.jpg'
