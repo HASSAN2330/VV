@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILLAVILUXE - Premium Beauty Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --gold: #c9a227;
+            --light-gold: #e6c35c;
+            --white: #f8f8f8;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #777777;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== Enhanced Professional Header ===== */
+        .main-header {
+            background-color: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            transition: var(--transition);
+        }
+
+        .main-header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin: 0;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+       .logo span {
+            font-size: 0.9rem;
+            color: darkgray;
+            letter-spacing: 1px;
+            font-weight: 300;
+            margin-bottom: -10px;
+        }
+
+
+        .cart-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .cart-link i {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            transition: var(--transition);
+        }
+
+        .cart-count {
+            background: var(--gold);
+            color: var(--black);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+    
+        /* Floating cart for mobile */
+        .floating-cart {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .floating-cart:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-cart i {
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+
+        .floating-cart .cart-count {
+            top: -5px;
+            right: -5px;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .toast i {
+            color: var(--gold);
+        }
+
+        /* ===== Hero Section ===== */
+       .hero {
+     position: relative;
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     z-index: 1;
+ }
+   
+        
+     .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+        
+     .video-info:hover {
+     opacity: 1;
+ }
+@keyframes cloudMove {
+    0% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(5%) scale(1.02); }
+    100% { transform: translateX(0) scale(1); }
+}
+
+@keyframes cloudFlow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Make sure content stays on top */
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+            color:  black;
+            opacity: 9;
+        }
+
+        .btn { 
+            position: absolute;
+            text-align: center;
+            margin-inline: 25%;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--black);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
+        }
+
+        /* ===== Products Section ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: var(--black);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+        }
+
+        .products {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 5px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 280px;
+            border-radius: 10px 10px 0 0;
+            object-fit: cover;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .product-card .product-info {
+            padding: 20px;
+        }
+
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            justify-self: center;
+            color: var(--black);
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .add-to-cart {
+            background-color: var(--black);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        /* ===== About Section ===== */
+        .about {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* ===== Contact Section ===== */
+        .contact {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.2);
+        }
+
+        .contact textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* ===== Footer ===== */
+        .main-footer {
+            background-color: var(--black);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 2.1rem;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .social-icons a:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== Responsive Styles ===== */
+        @media (max-width: 1024px) {
+            .main-nav ul {
+                gap: 1.5vw;
+            }
+            
+            .hero h2 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 30px;
+                transition: all 0.4s ease;
+            }
+            
+            .main-nav.active {
+                left: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .main-nav a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+            }
+            
+            /* Hide regular cart in header on mobile */
+            .cart-link {
+                display: none;
+            }
+            
+            /* Show floating cart on mobile */
+            .floating-cart {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toast {
+                width: 90%;
+                text-align: center;
+            }
+        }
+        /* Toast Notification */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1000;
+}
+
+.toast-notification.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-notification i {
+    font-size: 1.2rem;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(0,0,0,0.1);
+    width: 100%;
+    animation: progress 3s linear forwards;
+}
+
+@keyframes progress {
+    from { width: 100% }
+    to { width: 0% }
+}
+/* ===== Enhanced Professional Header ===== */
+.main-header {
+    background-color: whitesmoke;
+    backdrop-filter: blur(8px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    transition: var(--transition);
+}
+
+.main-header.scrolled {
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0;
+    background: linear-gradient(to right, var(--gold), var(--light-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: var(--transition);
+}
+
+
+.main-nav ul {
+    display: flex;
+    gap: 2vw;
+    list-style: none;
+    align-items: center;
+}
+
+.main-nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 8px 0;
+    transition: var(--transition);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--light-gold));
+    transition: width 0.4s ease;
+}
+
+.main-nav a:hover {
+    color: white;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.cart-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.cart-link i {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    transition: var(--transition);
+}
+
+.cart-count {
+    background: var(--gold);
+    color: var(--black);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+   .mobile-menu-btn {
+     display: none;
+     background: none;
+     border: none;
+     color: var(--gold);
+     font-size: 1.5rem;
+     cursor: pointer;
+ }
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 30px;
+        transition: all 0.4s ease;
+    }
+    
+    .main-nav.active {
+        left: 0;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .main-nav a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+    }
+}
+  
+         .video-container {
+     position: absolute;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+     overflow: hidden;
+ }
+ 
+ #bg-video {
+     min-width: 100%;
+     min-height: 100vh;
+     width: 100%;
+     height: 100vh;
+     position: relative;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     object-fit: cover;
+     transition: opacity 1s ease;
+     z-index: -2;
+ }
+        
+    </style>
+</head>
+<body>
+     <header class="main-header" id="mainHeader">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <h1>BILLAVILUXE</h1>
+                <span>Cosmetics</span>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Navigation -->
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+    <!-- Floating cart for mobile - only one cart icon -->
+    <a href="cart.html" class="floating-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </a>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Product added to cart</span>
+    </div>
+
+     <section class="hero">
+     <div class="video-container">
+         <video id="bg-video" autoplay muted loop playsinline></video>
+         <div class="overlay"></div>
+     </div>
+     
+     <div class="container">
+         <h2>الاختيار الامثل لجمالك</h2>
+         <p> احصلي على منتجات مختارة بعناية لخلق نظرة فائقة الجمال</p>
+         <a href="#products" class="btn">Shop Now</a>
+     </div>
+ </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="images/lipstick.jpg" alt="Luxury Lipstick">
+                    <div class="product-info">
+                        <h3>Velvet Matte Lipstick</h3>
+                        <span class="price">$29.99</span>
+                        <button class="add-to-cart" data-id="1">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="images/palette.jpg" alt="Eyeshadow Palette">
+                    <div class="product-info">
+                        <h3>Gold Rush Palette</h3>
+                        <span class="price">$49.99</span>
+                        <button class="add-to-cart" data-id="2">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="images/serum.jpg" alt="Anti-Aging Serum">
+                    <div class="product-info">
+                        <h3>24K Gold Serum</h3>
+                        <span class="price">$79.99</span>
+                        <button class="add-to-cart" data-id="3">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="images/perfume.jpg" alt="Luxury Perfume">
+                    <div class="product-info">
+                        <h3>Noir Eau de Parfum</h3>
+                        <span class="price">$89.99</span>
+                        <button class="add-to-cart" data-id="4">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About BILLAVILUXE</h2>
+            <p>Founded in 2025.</p>
+            <p> symbolizing sophistication and timeless beauty.</p>
+        </div>
+    </section>
+
+  <!--  <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>-->
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BILLAVILUXE Cosmetics</h3>
+                    <p>Premium beauty products for the modern, sophisticated individual.</p>
+                </div>
+                <div class="footer-section">
+                 <!--   <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>-->
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+    <a href="https://www.facebook.com/BILLAVILUXE" target="_blank" rel="noopener noreferrer" class="social-link">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank" rel="noopener noreferrer" class="social-link">
+        <i class="fab fa-instagram"></i>
+    </a> 
+            <a href="https://wa.me/212630339238" target="_blank" rel="noopener noreferrer" class="social-link">
+     <i class="fab fa-whatsapp"></i>
+ </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Billaviluxe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking on a link (mobile)
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    mainNav.classList.remove('active');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Initialize scroll state
+        if (window.scrollY > 20) header.classList.add('scrolled');
+        
+        // Add to cart functionality with toast notification
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartCounts = document.querySelectorAll('.cart-count');
+                const productName = this.closest('.product-card').querySelector('h3').textContent;
+                
+                // Update cart count
+                cartCounts.forEach(cartCount => {
+                    let count = parseInt(cartCount.textContent);
+                    cartCount.textContent = count + 1;
+                    
+                    // Add animation
+                    cartCount.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        cartCount.style.transform = 'scale(1)';
+                    }, 300);
+                });
+                
+                // Show toast notification
+                const toast = document.getElementById('toast');
+                toast.querySelector('span').textContent = `${productName} added to cart`;
+                toast.classList.add('show');
+                
+                // Hide toast after 3 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+                
+                // In a real implementation, you would add the product to cart here
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+    </script>
+     <script>document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Elements
+    const menuBtn = document.getElementById('menuBtn');
+    const mainNav = document.getElementById('mainNav');
+    const header = document.getElementById('mainHeader');
+
+    // Mobile Menu Toggle
+    if (menuBtn && mainNav) {
+        menuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+    }
+
+    // Close Mobile Menu on Link Click
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768 && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+        if (header) {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        }
+    });
+
+    // Initialize Header State
+    if (header) {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+    }
+});</script>
+ <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menuBtn');
+            const mainNav = document.getElementById('mainNav');
+            const header = document.getElementById('mainHeader');
+
+            // Mobile Menu Toggle
+            if (menuBtn && mainNav) {
+                menuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    menuBtn.innerHTML = mainNav.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
+            }
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768 && mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+
+            // Header Scroll Effect
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 20);
+            });
+
+            // Initialize header state
+            header.classList.toggle('scrolled', window.scrollY > 20);
+
+            // Cart functionality
+            let cartCount = 0;
+            const cartElements = document.querySelectorAll('.cart-count');
+            
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    cartCount++;
+                    cartElements.forEach(element => {
+                        element.textContent = cartCount;
+                        element.style.transform = 'scale(1.3)';
+                        setTimeout(() => element.style.transform = 'scale(1)', 300);
+                    });
+                    
+                    const toast = document.getElementById('toast');
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 3000);
+                });
+            });
+
+            // Form submission
+            document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you soon.');
+                this.reset();
+            });
+        });
+    </script>
+       <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgVideo = document.getElementById('bg-video');
+            
+            // تحقق مما إذا كان هناك إعدادات محفوظة
+            function loadSettings() {
+                // جلب حالة الصوت المحفوظة (مُفعّل أو لا)
+                const savedMuted = localStorage.getItem('videoMuted');
+                
+                // إذا كانت هناك قيمة محفوظة، نطبقها
+                if (savedMuted !== null) {
+                    bgVideo.muted = savedMuted === 'true';
+                } else {
+                    // الحالة الافتراضية: بدون صوت
+                    bgVideo.muted = true;
+                    localStorage.setItem('videoMuted', 'true');
+                }
+                
+                // إعداد مصدر الفيديو (استبدل بمسار الفيديو الخاص بك)
+                bgVideo.src = 'videos/video_2025-06-01_16-26-45.mp4';
+            }
+            
+            // تحميل الإعدادات عند بدء الصفحة
+            loadSettings();
+            
+            // تفاعل النقر على الفيديو لتغيير حالة الصوت
+            bgVideo.addEventListener('click', function() {
+                // تبديل حالة الصوت
+                bgVideo.muted = !bgVideo.muted;
+                
+                // حفظ الحالة الجديدة في localStorage
+                localStorage.setItem('videoMuted', bgVideo.muted.toString());
+                
+                // عرض رسالة مؤقتة
+                showMessage(bgVideo.muted ? "الصوت: مطفأ" : "الصوت: مفعّل");
+            });
+            
+            // وظيفة لعرض رسالة مؤقتة
+            function showMessage(text) {
+                const message = document.createElement('div');
+                message.textContent = text;
+                message.style.position = 'fixed';
+                message.style.top = '20px';
+                message.style.left = '50%';
+                message.style.transform = 'translateX(-50%)';
+                message.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                message.style.color = 'white';
+                message.style.padding = '10px 20px';
+                message.style.borderRadius = '20px';
+                message.style.zIndex = '100';
+                message.style.fontSize = '16px';
+                message.style.transition = 'opacity 0.5s';
+                
+                document.body.appendChild(message);
+                
+                // إخفاء الرسالة بعد 2 ثانية
+                setTimeout(() => {
+                    message.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(message);
+                    }, 500);
+                }, 2000);
+            }
+        });
+    </script>
+
+    <script src="cart.js"></script>
+   </body>
+</html>
