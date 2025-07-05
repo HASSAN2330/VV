@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const showToast = (message, type = 'success') => {
     const toastMessage = toast.querySelector('.toast-message');
     toastMessage.textContent = message;
-    toast.className = toast-notification ${type};
+    toast.className = `toast-notification ${type}`;
     void toast.offsetWidth; // Trigger reflow
     toast.classList.add('active');
     setTimeout(() => toast.classList.remove('active'), 3000);
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.product-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (!e.target.closest('.add-to-cart')) {
-          window.location.href = product-details.html?id=${card.dataset.id};
+          window.location.href = `product-details.html?id=${card.dataset.id}`;
         }
       });
     });
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', () => {
         const product = products.find(p => p.id === button.dataset.id);
         cartActions.add(product);
-        showToast(${product.name} added to cart 🛒, 'success');
+        showToast(`${product.name} added to cart 🛒`, 'success');
       });
     });
   }
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
           item.quantity + 1 : item.quantity - 1;
         
         cartActions.updateQuantity(item.id, newQuantity);
-        showToast(${item.name} quantity updated to ${newQuantity}, 'info');
+        showToast(`${item.name} quantity updated to ${newQuantity}`, 'info');
       });
     });
     
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', () => {
         const item = cart.find(item => item.id === button.dataset.id);
         cartActions.remove(item.id);
-        showToast(${item.name} removed from cart, 'warning');
+        showToast(`${item.name} removed from cart`, 'warning');
       });
     });
   };
@@ -220,9 +220,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const shipping = subtotal > 0 ? 5.99 : 0;
     
-    document.getElementById('subtotal').textContent = ${subtotal.toFixed(2)}DH;
-    document.getElementById('shipping').textContent = ${shipping.toFixed(2)}DH;
-    document.getElementById('total').textContent = ${(subtotal + shipping).toFixed(2)}DH;
+    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)}DH`;
+    document.getElementById('shipping').textContent = `${shipping.toFixed(2)}DH`;
+    document.getElementById('total').textContent = `${(subtotal + shipping).toFixed(2)}DH`;
   };
   
   // ======================
