@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
   // ======================
   //  Toast Notification System
@@ -83,6 +82,29 @@ document.addEventListener('DOMContentLoaded', function() {
         '•Gentle for daily use on sensitive areas',
       ]
     },
+    /* p4 */
+  {
+  id: '4',
+  name: 'aker fassi scrub',
+  price: 124.00,
+  image: 'images/aker.jpg',
+  gallery: [
+    'images/aker.jpg',
+    'images/aker2.jpg'
+  ],
+  description: `Profitez d’une beauté naturelle avec Bous Kiss Akar Fassi Scrub, inspiré du secret ancestral de la beauté marocaine – l’Akar Fassi. Sa formule riche en poudre de coquelicot naturel offre à votre peau une exfoliation douce, élimine les cellules mortes et lui redonne son éclat naturel.
+
+💎 Grâce aux propriétés reconnues de l’Akar Fassi, connues pour éclaircir le teint et unifier la peau, ce gommage aide à adoucir la texture et à révéler une lueur rosée et saine.
+
+🌿 Idéal pour une utilisation régulière afin d’obtenir une peau nette, douce et pleine de vitalité.`,
+  
+  details: [
+    '• Purifie la peau et élimine en douceur les cellules mortes',
+    '• Offre une douceur soyeuse et un aspect sain à la peau',
+    '• Contient de l’Akar Fassi, reconnu pour ses propriétés naturelles d’éclaircissement et d’unification du teint',
+    '• Ravive l’éclat du visage et lui donne une luminosité rosée naturelle',
+  ]
+},
   ];
   
   // ======================
@@ -253,4 +275,3 @@ document.addEventListener('DOMContentLoaded', function() {
   window.showToast = showToast;
   window.getProductById = (id) => products.find(p => p.id === id);
 });
-  
