@@ -252,3 +252,4 @@ document.addEventListener('DOMContentLoaded', function() {
   window.showToast = showToast;
   window.getProductById = (id) => products.find(p => p.id === id);
 });
+  
