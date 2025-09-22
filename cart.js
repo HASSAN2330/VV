@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: '1',
       name: 'Crème Solaire Multifonction SPF 50+',
-      price: 289.00,
+      price: 124.00,
       image: 'images/hh.jpg',
       gallery: [
         'images/scene_006_v3.jpg',
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: '2',
       name: 'Huile Fortifiante Ongles & Cuticules',
-      price: 139.00,
+      price: 115.00,
       image: 'images/AISelect_20250624_015646_OneDrive.jpg',
       gallery: [
         'images/AISelect_20250624_015720_OneDrive.jpg'
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: '3',
       name: 'RAMCHA Eyelash Serum',
-      price: 139.00,
+      price: 89.00,
       image: 'images/rm2.jpg',
       gallery: [
         'images/rm2.jpg'
@@ -86,11 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
   {
   id: '4',
   name: 'aker fassi scrub',
-  price: 124.00,
+  price: 89.00,
   image: 'images/aker.jpg',
   gallery: [
-    'images/aker.jpg',
-    'images/aker2.jpg'
+    'images/aker.jpg'
   ],
   description: `Profitez d’une beauté naturelle avec Bous Kiss Akar Fassi Scrub, inspiré du secret ancestral de la beauté marocaine – l’Akar Fassi. Sa formule riche en poudre de coquelicot naturel offre à votre peau une exfoliation douce, élimine les cellules mortes et lui redonne son éclat naturel.
 
@@ -104,6 +103,33 @@ document.addEventListener('DOMContentLoaded', function() {
     '• Contient de l’Akar Fassi, reconnu pour ses propriétés naturelles d’éclaircissement et d’unification du teint',
     '• Ravive l’éclat du visage et lui donne une luminosité rosée naturelle',
   ]
+},
+
+    /* 5 */
+  {
+  id: '5',
+  name: 'aker fassi scrub',
+  price: 124.00,
+  image: 'images/aker.jpg',
+  gallery: [
+    'images/aker2.jpg'
+  ],
+  description: `Baume Bous Bous - Akar Fassi
+
+Offrez à votre peau un soin raffiné avec le Baume Bous Bous Akar Fassi, inspiré du secret ancestral de la beauté marocaine.
+
+Enrichi en Akar Fassi naturel, ce baume nourrit intensément la peau et révèle un éclat naturel tout en laissant une sensation de douceur et de fraîcheur durable.
+
+💎 Grâce aux propriétés reconnues de l’Akar Fassi, réputé pour illuminer le teint et unifier la peau, ce baume nourrit intensément, adoucit la texture et révèle une lueur rosée naturelle et éclatante.
+
+🌿 Idéal pour une utilisation quotidienne afin d’hydrater, protéger et sublimer la peau avec douceur et vitalité.
+  
+  details: [
+    '• Purifie la peau et élimine en douceur les cellules mortes',
+    '• Offre une douceur soyeuse et un aspect sain à la peau',
+    '• Contient de l’Akar Fassi, reconnu pour ses propriétés naturelles d’éclaircissement et d’unification du teint',
+    '• Ravive l’éclat du visage et lui donne une luminosité rosée naturelle',
+]
 },
   ];
   
