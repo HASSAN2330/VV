@@ -116,15 +116,15 @@ document.addEventListener('DOMContentLoaded', function() {
   ],
   description: `Baume Bous Bous - Akar Fassi
 
-Offrez à votre peau un soin raffiné avec le Baume Bous Bous Akar Fassi, inspiré du secret ancestral de la beauté marocaine.
+'Offrez à votre peau un soin raffiné avec le Baume Bous Bous Akar Fassi, inspiré du secret ancestral de la beauté marocaine.
 
-Enrichi en Akar Fassi naturel, ce baume nourrit intensément la peau et révèle un éclat naturel tout en laissant une sensation de douceur et de fraîcheur durable.
+ 'Enrichi en Akar Fassi naturel, ce baume nourrit intensément la peau et révèle un éclat naturel tout en laissant une sensation de douceur et de fraîcheur durable.
 
-💎 Grâce aux propriétés reconnues de l’Akar Fassi, réputé pour illuminer le teint et unifier la peau, ce baume nourrit intensément, adoucit la texture et révèle une lueur rosée naturelle et éclatante.
+  💎 grâce aux propriétés reconnues de l’Akar Fassi, réputé pour illuminer le teint et unifier la peau, ce baume nourrit intensément, adoucit la texture et révèle une lueur rosée naturelle et éclatante.
 
-🌿 Idéal pour une utilisation quotidienne afin d’hydrater, protéger et sublimer la peau avec douceur et vitalité.
+    🪄 ' idéal pour une utilisation quotidienne afin d’hydrater, protéger et sublimer la peau avec douceur et vitalité.`,
   
-  details: [
+   details: [
     '• Purifie la peau et élimine en douceur les cellules mortes',
     '• Offre une douceur soyeuse et un aspect sain à la peau',
     '• Contient de l’Akar Fassi, reconnu pour ses propriétés naturelles d’éclaircissement et d’unification du teint',
