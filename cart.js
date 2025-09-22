@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   id: '5',
   name: 'aker fassi scrub',
   price: 124.00,
-  image: 'images/aker.jpg',
+  image: 'images/aker2.jpg',
   gallery: [
     'images/aker2.jpg'
   ],
