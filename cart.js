@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: '1',
       name: 'Crème Solaire Multifonction SPF 50+',
-      price: 124.00,
+      price: 289.00,
       image: 'images/hh.jpg',
       gallery: [
         'images/scene_006_v3.jpg',
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: '3',
       name: 'RAMCHA Eyelash Serum',
-      price: 89.00,
+      price: 124.00,
       image: 'images/rm2.jpg',
       gallery: [
         'images/rm2.jpg'
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     /* p4 */
   {
   id: '4',
-  name: 'aker fassi scrub',
+  name: 'Aker fassi scrub',
   price: 89.00,
   image: 'images/aker.jpg',
   gallery: [
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     /* 5 */
   {
   id: '5',
-  name: 'aker fassi scrub',
+  name: 'Aker fassi balm',
   price: 89.00,
   image: 'images/aker2.jpg',
   gallery: [
