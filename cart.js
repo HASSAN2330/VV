@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const updateCartSummary = () => {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const shipping = subtotal > 0 ? 5.99 : 0;
+    const shipping = subtotal > 0 ? 0.00 : 0;
     
     document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)}DH`;
     document.getElementById('shipping').textContent = `${shipping.toFixed(2)}DH`;
