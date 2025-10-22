@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   id: '5',
   name: 'Aker fassi balm',
   price: 89.00,
-  image: 'images/aker2.jpg',
+  image: 'TBRW0581[1].PNG',
   gallery: [
     'images/aker2.jpg'
   ],
