@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
   id: '4',
   name: 'Aker fassi scrub',
   price: 89.00,
-  image: 'TBRW0581[1].PNG',
+  image: 'images/aker.jpg',
   gallery: [
     'images/aker.jpg'
   ],
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   id: '5',
   name: 'Aker fassi balm',
   price: 89.00,
-  image: 'TBRW0581[1].PNG',
+  image: 'images/aker2.jpg',
   gallery: [
     'images/aker2.jpg'
   ],
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const updateCartSummary = () => {
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const shipping = subtotal > 0 ? 00.00: 0;
+    const shipping = subtotal > 0 ? 00.00 : 0;
     
     document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)}DH`;
     document.getElementById('shipping').textContent = `${shipping.toFixed(2)}DH`;
