@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
   id: '4',
   name: 'Aker fassi scrub',
   price: 89.00,
-  image: 'images/aker.jpg',
+  image: 'images/IMG-20251025-WA0025.jpg',
   gallery: [
-    'images/aker.jpg'
+    'images/IMG-20251025-WA0022.jpg'
   ],
   description: `Profitez d’une beauté naturelle avec Bous Kiss Akar Fassi Scrub, inspiré du secret ancestral de la beauté marocaine – l’Akar Fassi. Sa formule riche en poudre de coquelicot naturel offre à votre peau une exfoliation douce, élimine les cellules mortes et lui redonne son éclat naturel.
 
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   id: '5',
   name: 'Aker fassi balm',
   price: 89.00,
-  image: 'images/aker2.jpg',
+  image: 'images/IMG-20251025-WA0023.jpg',
   gallery: [
     'images/aker2.jpg'
   ],
