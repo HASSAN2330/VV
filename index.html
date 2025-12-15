@@ -39,7 +39,7 @@
 
         /* ===== Enhanced Professional Header ===== */
         .main-header {
-            background-color: rgba(10, 10, 10, 0.98);
+            background:  #4B5235;
             backdrop-filter: blur(8px);
             position: fixed;
             width: 100%;
@@ -52,7 +52,7 @@
 
         .main-header.scrolled {
             padding: 10px 0;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: #4B5235;
         }
 
         .header-content {
@@ -65,26 +65,17 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            height: 40px;
+            width: 70px;
         }
+        .logo img { 
+             width: 220px;
+ height: 40px;
+ border-radius: 10px 10px 0 0;
+ object-fit: cover;
+        }
+        
 
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin: 0;
-            background: linear-gradient(to right, var(--gold), var(--light-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: var(--transition);
-        }
-
-       .logo span {
-            font-size: 0.9rem;
-            color: darkgray;
-            letter-spacing: 1px;
-            font-weight: 300;
-            margin-bottom: -10px;
-        }
 
 
         .cart-link {
@@ -408,7 +399,7 @@
 
         /* ===== Footer ===== */
         .main-footer {
-            background-color: var(--black);
+            background-color: #4B5235;
             color: white;
             padding: 60px 0 20px;
         }
@@ -623,7 +614,7 @@
 }
 /* ===== Enhanced Professional Header ===== */
 .main-header {
-    background-color: whitesmoke;
+    background-color: #4B5235;
     backdrop-filter: blur(8px);
     position: fixed;
     width: 100%;
@@ -636,7 +627,7 @@
 
 .main-header.scrolled {
     padding: 10px 0;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: #4B5235;
 }
 
 .header-content {
@@ -802,10 +793,11 @@
      <header class="main-header" id="mainHeader">
     <div class="container">
         <div class="header-content">
-            <div class="logo">
-                <h1>BILLAVILUXE</h1>
-                <span>Cosmetics</span>
-            </div>
+           
+                <div class="logo"><img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
+                    
+                </div>
+           
             
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="menuBtn">
