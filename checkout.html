@@ -44,22 +44,23 @@
         }
 
         /* Header Styles */
-        .main-header {
-            background-color: white;
-            backdrop-filter: blur(8px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
-            transition: var(--transition);
-        }
+         .main-header {
+    background: #4B5235;
+    backdrop-filter: blur(8px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    transition: var(--transition);
+}
 
-        .main-header.scrolled {
-            padding: 10px 0;
-            background-color: rgba(0, 0, 0, 0.95);
-        }
+.main-header.scrolled {
+    padding: 10px 0;
+    background-color: #4B5235;
+}
+
 
         .header-content {
             display: flex;
@@ -72,8 +73,21 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            height: 40px;
+            width: 70px;
         }
-
+   .logo img { 
+             width: 220px;
+ height: 40px;
+ border-radius: 10px 10px 0 0;
+ object-fit: cover;
+        }
+.main-nav ul {
+    display: flex;
+    gap: 2vw;
+    list-style: none;
+    align-items: center;
+}
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 700;
@@ -452,10 +466,10 @@
 
         /* Footer Styles */
         .main-footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 50px 0 20px;
-        }
+    background-color: #4B5235;
+    color: white;
+    padding: 60px 0 20px;
+}
 
         .footer-content {
             display: grid;
@@ -660,36 +674,32 @@
 </head>
 <body>
      <header class="main-header" id="mainHeader">
-      <div class="container">
-          <div class="header-content">
-              <div class="logo">
-                  <h1>billaviluxe</h1>
-                  <span>Cosmetics</span>
-              </div>
-              
-              <!-- Mobile Menu Button -->
-              <button class="mobile-menu-btn" id="menuBtn">
-                  <i class="fas fa-bars"></i>
-              </button>
-              
-              <!-- Navigation -->
-              <nav class="main-nav" id="mainNav">
-                  <ul>
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="#products">Products</a></li>
-                      <li><a href="#about">About</a></li>
-                      <li><a href="#contact">Contact</a></li>
-                      <li>
-                          <a href="cart.html" class="cart-link">
-                              <i class="fas fa-shopping-cart"></i>
-                              <span class="cart-count">0</span>
-                          </a>
-                      </li>
-                  </ul>
-              </nav>
-          </div>
-      </div>
-  </header>
+        <div class="container">
+            <div class="header-content">
+               <div class="logo"><img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
+    
+</div> 
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="main-nav" id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li>
+                            <a href="cart.html" class="cart-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
     <section class="checkout-section">
         <div class="container">
             <h2 class="section-title">Checkout</h2>
@@ -794,7 +804,7 @@
                         </div>
                         <div class="summary-row">
                             <span>Shipping</span>
-                            <span id="order-shipping">5.99 DH</span>
+                            <span id="order-shipping">0 DH</span>
                         </div>
                         <div class="summary-row total">
                             <span>Total</span>
@@ -822,22 +832,21 @@
         </div>
     </div>
 
-    <footer class="main-footer">
+     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>BILLAVILUXE Cosmetics</h3>
-                    <p>Premium beauty products for the modern, sophisticated individual.</p>
+                     <div class="logo"><img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
+                    
+                </div>
+                    <p style="margin-top: 70px; font-size: 1rem; text-align: center;">Premium beauty products for the modern, sophisticated individual.</p>
                 </div>
                 <div class="footer-section">
-                 <!--   <h3>Quick Links</h3>
+                   <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
                         <li><a href="cart.html">Cart</a></li>
-                    </ul>-->
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
@@ -869,7 +878,7 @@
                 CURRENCY: "DH",
                 WHATSAPP_API_KEY: "8940735" // For COD orders
             },
-            SHIPPING: 5.99
+            SHIPPING: 0
         };
 
         // Cart Manager
