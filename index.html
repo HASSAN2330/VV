@@ -901,7 +901,78 @@
     
     
     
-    
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Logic
+            const menuBtn = document.getElementById('menuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (menuBtn && mainNav) {
+                menuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    menuBtn.innerHTML = mainNav.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
+                
+                // Close menu when clicking links
+                document.querySelectorAll('.main-nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('active');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
+            // 2. Header Scroll Effect
+            const header = document.getElementById('mainHeader');
+            const handleScroll = () => {
+                if(header) header.classList.toggle('scrolled', window.scrollY > 20);
+                revealOnScroll();
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Init on load
+
+            // 3. Scroll Reveal Animation
+            function revealOnScroll() {
+                var reveals = document.querySelectorAll(".reveal");
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 150;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add("active");
+                    }
+                }
+            }
+
+            // 4. Video Sound Logic
+            const bgVideo = document.getElementById('bg-video');
+            if (bgVideo) {
+                // Ensure video plays
+                bgVideo.play().catch(e => console.log("Autoplay blocked usually requires mute"));
+                
+                // Toggle mute on click
+                bgVideo.addEventListener('click', function() {
+                    bgVideo.muted = !bgVideo.muted;
+                    showMessage(bgVideo.muted ? "الصوت: مطفأ" : "الصوت: مفعّل");
+                });
+            }
+
+            // Helper to show video messages
+            function showMessage(text) {
+                const msg = document.createElement('div');
+                msg.textContent = text;
+                Object.assign(msg.style, {
+                    position: 'fixed', top: '100px', left: '50%', transform: 'translateX(-50%)',
+                    backgroundColor: 'rgba(0,0,0,0.8)', color: 'white', padding: '10px 20px',
+                    borderRadius: '20px', zIndex: '2000', transition: 'opacity 0.5s'
+                });
+                document.body.appendChild(msg);
+                setTimeout(() => { msg.style.opacity = '0'; setTimeout(() => msg.remove(), 500); }, 2000);
+            }
+        });
+    </script>
     <script>
         // Header scroll effect
         const header = document.getElementById('mainHeader');
@@ -955,44 +1026,6 @@
             this.reset();
         });
     </script>
-     <script>document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Elements
-    const menuBtn = document.getElementById('menuBtn');
-    const mainNav = document.getElementById('mainNav');
-    const header = document.getElementById('mainHeader');
-
-    // Mobile Menu Toggle
-    if (menuBtn && mainNav) {
-        menuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            menuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-    }
-
-    // Close Mobile Menu on Link Click
-    document.querySelectorAll('.main-nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth < 768 && mainNav.classList.contains('active')) {
-                mainNav.classList.remove('active');
-                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-    });
-
-    // Header Scroll Effect
-    window.addEventListener('scroll', () => {
-        if (header) {
-            header.classList.toggle('scrolled', window.scrollY > 20);
-        }
-    });
-
-    // Initialize Header State
-    if (header) {
-        header.classList.toggle('scrolled', window.scrollY > 20);
-    }
-});</script>
  <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('menuBtn');
