@@ -1,303 +1,869 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // ======================
-  //  Toast Notification System
-  // ======================
-  const toast = document.createElement('div');
-  toast.className = 'toast-notification';
-  toast.innerHTML = `
-    <span class="toast-message"></span>
-    <div class="toast-progress"></div>
-  `;
-  document.body.appendChild(toast);
-  
-  const showToast = (message, type = 'success') => {
-    const toastMessage = toast.querySelector('.toast-message');
-    toastMessage.textContent = message;
-    toast.className = `toast-notification ${type}`;
-    void toast.offsetWidth; // Trigger reflow
-    toast.classList.add('active');
-    setTimeout(() => toast.classList.remove('active'), 3000);
-  };
-  
-  // ======================
-  //  Product Database
-  // ======================
-  const products = [
-    {
-      id: '1',
-      name: 'Crème Solaire Multifonction SPF 50+',
-      price: 289.00,
-      image: 'images/hh.jpg',
-      gallery: [
-        'images/scene_006_v3.jpg',
-        'images/DSC00089.jpg',
-        'images/DSC00045_ff684f91-e8de-4d1c-b19c-210952c3f7b6.jpg',
-        'images/hh.jpg'
-      ],
-      description: 'avec des filtres solaires chimiques, se fond sans effort dans toutes les carnations et offre une sensation de légèreté. Il offre une protection SPF 50 et laisse un fini rosé et éclatant. Elle se présente dans un format pratique de 50 ml pour une application et un transport aisés.',
-      details: [
-        'Sétale facilement',
-        'Pas de boulochage',
-        'Pas de traces blanches',
-        'Non grasse',
-        'Ne pique pas les yeux',
-        'Fonctionne bien sous le maquillage'
-      ]
-    },
-    /* p2 */
-    {
-      id: '2',
-      name: 'Huile Fortifiante Ongles & Cuticules',
-      price: 115.00,
-      image: 'images/AISelect_20250624_015646_OneDrive.jpg',
-      gallery: [
-        'images/AISelect_20250624_015720_OneDrive.jpg'
-      ],
-      description: '🌿 Huile Fortifiante Ongles & Cuticules – 100% Naturelle Offrez à vos ongles la cure naturelle qu’ils méritent ! Notre Huile Fortifiante pour Ongles & Cuticules est une formule précieuse, riche en huile de ricin, huile d’amande douce, et huile essentielle de citron. Un mélange 100% naturel pour renforcer, hydrater, et embellir vos ongles et cuticules dès la première application.',
-      
-      
-      details: [
-        '•	Renforce la structure des ongles cassants et secs',
-        '•	Hydrate et nourrit en profondeur les cuticulse',
-        '•	Stimule la pousse des ongles grâce à l’huile de ricin',
-        '•	Laisse un parfum frais et délicat de citron',
-      ]
-    },
-    /* p3 */
-    {
-      id: '3',
-      name: 'RAMCHA Eyelash Serum',
-      price: 124.00,
-      image: 'images/rm2.jpg',
-      gallery: [
-        'images/rm2.jpg'
-      ],
-      description: 'For Longer, Thicker & Healthier Lashes & Brows Discover the power of nature with RAMCHA Eyelash Serum, expertly crafted to nourish and strengthen your lashes and eyebrows.Infused with a luxurious blend of plant - based oils, this serum promotes natural growth, reduces breakage, and adds a soft, healthy shine.',
-      
-      
-      details: [
-        '•Stimulates natural lash and brow growth',
-        '•Strengthens hair follicles and reduces thinning',
-        '•Deeply moisturizes with no irritation',
-        '•Gentle for daily use on sensitive areas',
-      ]
-    },
-    /* p4 */
-  {
-  id: '4',
-  name: 'Aker fassi scrub',
-  price: 89.00,
-  image: 'images/IMG-20251025-WA0025.jpg',
-  gallery: [
-    'images/IMG-20251025-WA0022.jpg'
-  ],
-  description: `Profitez d’une beauté naturelle avec Bous Kiss Akar Fassi Scrub, inspiré du secret ancestral de la beauté marocaine – l’Akar Fassi. Sa formule riche en poudre de coquelicot naturel offre à votre peau une exfoliation douce, élimine les cellules mortes et lui redonne son éclat naturel.
-
-💎 Grâce aux propriétés reconnues de l’Akar Fassi, connues pour éclaircir le teint et unifier la peau, ce gommage aide à adoucir la texture et à révéler une lueur rosée et saine.
-
-🌿 Idéal pour une utilisation régulière afin d’obtenir une peau nette, douce et pleine de vitalité.`,
-  
-  details: [
-    '• Purifie la peau et élimine en douceur les cellules mortes',
-    '• Offre une douceur soyeuse et un aspect sain à la peau',
-    '• Contient de l’Akar Fassi, reconnu pour ses propriétés naturelles d’éclaircissement et d’unification du teint',
-    '• Ravive l’éclat du visage et lui donne une luminosité rosée naturelle',
-  ]
-},
-
-    /* 5 */
-  {
-  id: '5',
-  name: 'Aker fassi balm',
-  price: 89.00,
-  image: 'images/IMG-20251025-WA0023.jpg',
-  gallery: [
-    'images/aker2.jpg'
-  ],
-  description: `Baume Bous Bous - Akar Fassi
-
-'Offrez à votre peau un soin raffiné avec le Baume Bous Bous Akar Fassi, inspiré du secret ancestral de la beauté marocaine.
-
- 'Enrichi en Akar Fassi naturel, ce baume nourrit intensément la peau et révèle un éclat naturel tout en laissant une sensation de douceur et de fraîcheur durable.
-
-  💎 grâce aux propriétés reconnues de l’Akar Fassi, réputé pour illuminer le teint et unifier la peau, ce baume nourrit intensément, adoucit la texture et révèle une lueur rosée naturelle et éclatante.
-
-    🪄 ' idéal pour une utilisation quotidienne afin d’hydrater, protéger et sublimer la peau avec douceur et vitalité.`,
-  
-   details: [
-    '• Purifie la peau et élimine en douceur les cellules mortes',
-    '• Offre une douceur soyeuse et un aspect sain à la peau',
-    '• Contient de l’Akar Fassi, reconnu pour ses propriétés naturelles d’éclaircissement et d’unification du teint',
-    '• Ravive l’éclat du visage et lui donne une luminosité rosée naturelle',
-]
-},
-  ];
-  
-  // ======================
-  //  Cart System
-  // ======================
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-  const cartActions = {
-    add: (product) => {
-      const existingItem = cart.find(item => item.id === product.id);
-      existingItem ? existingItem.quantity++ : cart.push({ ...product, quantity: 1 });
-      cartActions.save();
-      updateCartCount();
-    },
-    
-    remove: (productId) => {
-      cart = cart.filter(item => item.id !== productId);
-      cartActions.save();
-      updateCartCount();
-    },
-    
-    updateQuantity: (productId, newQuantity) => {
-      const item = cart.find(item => item.id === productId);
-      if (item) {
-        item.quantity = Math.max(1, newQuantity);
-        cartActions.save();
-        updateCartCount();
-      }
-    },
-    
-    save: () => {
-      localStorage.setItem('cart', JSON.stringify(cart));
-      if (document.getElementById('cart-table-body')) displayCartItems();
-    },
-    
-    clear: () => {
-      cart = [];
-      cartActions.save();
-      updateCartCount();
-    }
-  };
-  
-  // ======================
-  //  Product Rendering
-  // ======================
-  function renderProducts() {
-    const productGrid = document.querySelector('.product-grid');
-    if (!productGrid) return;
-    
-    productGrid.innerHTML = products.map(product => `
-      <div class="product-card" data-id="${product.id}">
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p class="price">${product.price.toFixed(2)}DH</p>
-        <button class="add-to-cart" 
-                data-id="${product.id}"
-                aria-label="Add ${product.name} to cart">
-          Add to Cart
-        </button>
-      </div>
-    `).join('');
-    
-    // Product card click handling
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        if (!e.target.closest('.add-to-cart')) {
-          window.location.href = `product-details.html?id=${card.dataset.id}`;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - billaviluxe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/bvllogo/Asset1.png">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --gold: #c9a227;
+            --light-gold: #e6c35c;
+            --white: #f8f8f8;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #777777;
+            --danger: #d32f2f;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-      });
-    });
-    
-    // Add to cart functionality
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', () => {
-        const product = products.find(p => p.id === button.dataset.id);
-        cartActions.add(product);
-        showToast(`${product.name} added to cart 🛒`, 'success');
-      });
-    });
-  }
-  
-  // ======================
-  //  Cart UI Functions
-  // ======================
-  const updateCartCount = () => {
-    const count = cart.reduce((total, item) => total + item.quantity, 0);
-    document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
-  };
-  
-  const displayCartItems = () => {
-    const cartTableBody = document.getElementById('cart-table-body');
-    if (!cartTableBody) return;
-    
-    cartTableBody.innerHTML = cart.length ?
-      cart.map(item => `
-        <tr>
-          <td><img src="${item.image}" class="cart-product-image" alt="${item.name}"></td>
-          <td>${item.name}</td>
-          <td>${item.price.toFixed(2)}DH</td>
-          <td>
-            <button class="quantity-btn minus" data-id="${item.id}">-</button>
-            <span class="quantity">${item.quantity}</span>
-            <button class="quantity-btn plus" data-id="${item.id}">+</button>
-          </td>
-          <td>${(item.price * item.quantity).toFixed(2)}DH</td>
-          <td><button class="remove-btn" data-id="${item.id}"><i class="fas fa-trash"></i></button></td>
-        </tr>
-      `).join('') : '<tr><td colspan="6">Your cart is empty</td></tr>';
-    
-    addCartEventListeners();
-    updateCartSummary();
-  };
-  
-  const addCartEventListeners = () => {
-    document.querySelectorAll('.quantity-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = cart.find(item => item.id === button.dataset.id);
-        const newQuantity = button.classList.contains('plus') ?
-          item.quantity + 1 : item.quantity - 1;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== Header Styles ===== */
+        .main-header {
+            background: #4B5235;
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            transition: var(--transition);
+        }
+
+        .main-header.scrolled {
+            padding: 10px 0;
+            background-color: #3d422b;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
         
-        cartActions.updateQuantity(item.id, newQuantity);
-        showToast(`${item.name} quantity updated to ${newQuantity}`, 'info');
-      });
-    });
-    
-    document.querySelectorAll('.remove-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = cart.find(item => item.id === button.dataset.id);
-        cartActions.remove(item.id);
-        showToast(`${item.name} removed from cart`, 'warning');
-      });
-    });
-  };
-  
-  const updateCartSummary = () => {
-    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const shipping = subtotal > 0 ? 5.99 : 0;
-    
-    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)}DH`;
-    document.getElementById('shipping').textContent = `${shipping.toFixed(2)}DH`;
-    document.getElementById('total').textContent = `${(subtotal + shipping).toFixed(2)}DH`;
-  };
-  
-  // ======================
-  //  Initialization
-  // ======================
-  if (document.querySelector('.product-grid')) renderProducts();
-  updateCartCount();
-  if (document.getElementById('cart-table-body')) displayCartItems();
-  
-  // ======================
-  //  Checkout System
-  // ======================
-  document.getElementById('checkout-btn')?.addEventListener('click', () => {
-    if (cart.length === 0) {
-      showToast('Your cart is empty!', 'warning');
-      return;
-    }
-    
-    showToast('Order placed successfully! 🎉', 'success');
-    cartActions.clear();
-  });
-  
-  // ======================
-  //  Global Exports
-  // ======================
-  window.cartActions = cartActions;
-  window.showToast = showToast;
-  window.getProductById = (id) => products.find(p => p.id === id);
-});
+        .logo img { 
+            width: auto;
+            height: 40px; /* Adjusted to maintain aspect ratio */
+            object-fit: contain;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 2vw;
+            list-style: none;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            transition: width 0.4s ease;
+        }
+
+        .main-nav a:hover {
+            color: white;
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .cart-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .cart-count {
+            background: var(--gold);
+            color: var(--black);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== Free Shipping Bar ===== */
+        .shipping-progress {
+            margin-bottom: 30px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .shipping-text {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* ===== Cart Section Styles ===== */
+        .cart-section {
+            padding: 40px 0;
+            flex: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--black);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* 2/3 for items, 1/3 for summary */
+            gap: 30px;
+            align-items: start;
+        }
+
+        .cart-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            display: none;
+            grid-column: 1 / -1; /* Span full width if empty */
+            background: white;
+            border-radius: 10px;
+        }
+
+        .empty-cart i {
+            font-size: 3.5rem;
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+        }
+
+        .empty-cart p {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 25px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        th {
+            background-color: #fcfcfc;
+            font-weight: 600;
+            color: var(--black);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .product-col { display: flex; align-items: center; gap: 15px; }
+        .product-image {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .product-name { font-weight: 600; margin-bottom: 4px; color: var(--black); }
+        .product-sku { font-size: 0.75rem; color: var(--dark-gray); }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            background: var(--light-gray);
+            border-radius: 20px;
+            padding: 2px;
+            width: fit-content;
+        }
+
+        .quantity-btn {
+            background: transparent;
+            border: none;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover { color: var(--black); background: rgba(0,0,0,0.05); border-radius: 50%; }
+
+        .quantity {
+            font-weight: 600;
+            min-width: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 5px;
+        }
+
+        .remove-btn:hover { color: var(--danger); transform: scale(1.1); }
+
+        /* Cart Summary Styles */
+        .cart-summary {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .cart-summary h3 {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            color: var(--black);
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 15px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+        }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-top: 1px solid var(--medium-gray);
+            padding-top: 20px;
+            margin-top: 20px;
+            color: var(--black);
+        }
+
+        .promo-code {
+            display: flex;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        .promo-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .btn {
+            display: block;
+            background: linear-gradient(135deg, var(--gold), #b89322);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+            background: linear-gradient(135deg, #d4b03e, #c9a227);
+        }
+
+        .btn:disabled {
+            background: var(--medium-gray);
+            box-shadow: none;
+            cursor: not-allowed;
+            color: #999;
+        }
+
+        .continue-shopping {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: var(--dark-gray);
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+        
+        .continue-shopping:hover { color: var(--gold); }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #222;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show { opacity: 1; visibility: visible; bottom: 40px; }
+        .toast i { color: var(--gold); }
+
+        /* Footer Styles */
+        .main-footer {
+            background-color: #4B5235;
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: auto;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a {
+            color: white;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* ===== Responsive Styles (Mobile Optimization) ===== */
+        @media (max-width: 900px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+            .cart-summary {
+                position: static;
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; z-index: 1001; }
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #1a1a1a;
+                padding: 80px 30px;
+                transition: 0.4s ease;
+                z-index: 1000;
+            }
+            .main-nav.active { right: 0; }
+            .main-nav ul { flex-direction: column; align-items: flex-start; gap: 25px; }
+            .cart-link { display: none; } /* Hide desktop cart icon in menu */
+            
+            /* Mobile Table to Cards Transformation */
+            table, thead, tbody, th, td, tr { display: block; }
+            thead tr { position: absolute; top: -9999px; left: -9999px; }
+            
+            .cart-container { background: transparent; box-shadow: none; }
+            
+            tr {
+                background: white;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                position: relative;
+                padding: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            td { 
+                border: none;
+                padding: 5px 0;
+            }
+
+            /* Image Row */
+            td:nth-of-type(1) { width: 30%; }
+            .product-image { width: 100%; height: auto; aspect-ratio: 1; }
+
+            /* Product Name & SKU */
+            td:nth-of-type(2) { 
+                width: 70%; 
+                padding-left: 15px; 
+            }
+
+            /* Price */
+            td:nth-of-type(3) {
+                width: 100%;
+                order: 4;
+                color: var(--gold);
+                font-size: 1.1rem;
+                margin-top: 10px;
+                display: flex;
+                justify-content: flex-end;
+            }
+            td:nth-of-type(3)::before { content: 'Price: '; color: var(--dark-gray); margin-right: auto; font-size: 0.9rem; font-weight: 400;}
+
+            /* Quantity */
+            td:nth-of-type(4) {
+                width: auto;
+                order: 3;
+                margin-top: 15px;
+            }
+
+            /* Total (Hide individual total on mobile to save space) */
+            td:nth-of-type(5) { display: none; }
+
+            /* Remove Button */
+            td:nth-of-type(6) {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header" id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+               <div class="logo">
+                   <img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
+                </div> 
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="main-nav" id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li>
+                            <a href="cart.html" class="cart-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Notification</span>
+    </div>
+
+    <section class="cart-section">
+        <div class="container">
+            <h2 class="section-title">Shopping Cart</h2>
+            
+            <div class="shipping-progress" id="shippingProgressBox">
+                <div class="shipping-text" id="shippingText">Add more to get free shipping!</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="shippingBar"></div>
+                </div>
+            </div>
+
+            <div class="cart-layout">
+                <div class="cart-items-wrapper">
+                    <div class="empty-cart" id="emptyCart">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Your cart is currently empty.</p>
+                        <a href="index.html#products" class="btn" style="width: 200px; margin: 0 auto;">Start Shopping</a>
+                    </div>
+                    
+                    <div class="cart-container" id="cartItems">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Details</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-table-body">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="cart-summary" id="cartSummary">
+                    <h3>Order Summary</h3>
+                    
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">0.00 DH</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="shipping">Calculating...</span>
+                        </div>
+                        
+                        <div class="promo-code">
+                            <input type="text" placeholder="Promo Code" class="promo-input">
+                            <button class="btn" style="width: auto; padding: 0 15px; font-size: 0.8rem;">Apply</button>
+                        </div>
+
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">0.00 DH</span>
+                        </div>
+                    </div>
+                    <a href="checkout.html" class="btn" id="checkout-btn" disabled>Proceed to Checkout</a>
+                    <a href="index.html#products" class="continue-shopping">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" style="height: 30px; margin-bottom: 15px;" />
+                    <p>Premium beauty products for the modern, sophisticated individual.</p>
+                </div>
+                <div class="footer-section">
+                   <h3>Quick Links</h3>
+                    <ul style="list-style: none; margin-top: 10px;">
+                        <li><a href="index.html" style="color: #ddd; text-decoration: none;">Home</a></li>
+                        <li><a href="cart.html" style="color: #ddd; text-decoration: none;">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons" style="margin-top: 15px;">
+                        <a href="https://www.facebook.com/BILLAVILUXE" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank"><i class="fab fa-instagram"></i></a> 
+                        <a href="https://wa.me/212630339238" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Billaviluxe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration
+        const FREE_SHIPPING_THRESHOLD = 500; // Free shipping over 500 DH
+        const SHIPPING_COST = 40; // Standard shipping cost
+        
+        // State
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // DOM Elements
+        const cartTableBody = document.getElementById('cart-table-body');
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        const subtotalElement = document.getElementById('subtotal');
+        const totalElement = document.getElementById('total');
+        const shippingElement = document.getElementById('shipping');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const emptyCartDiv = document.getElementById('emptyCart');
+        const cartItemsDiv = document.getElementById('cartItems');
+        const cartSummaryDiv = document.getElementById('cartSummary');
+        const shippingProgressBox = document.getElementById('shippingProgressBox');
+        
+        // Header & Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const header = document.getElementById('mainHeader');
+
+        menuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Initialize
+        function initCart() {
+            renderCart();
+            updateCartCalculations();
+        }
+
+        function renderCart() {
+            cartTableBody.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartDiv.style.display = 'block';
+                cartItemsDiv.style.display = 'none';
+                cartSummaryDiv.style.display = 'none';
+                shippingProgressBox.style.display = 'none';
+                return;
+            }
+
+            emptyCartDiv.style.display = 'none';
+            cartItemsDiv.style.display = 'block';
+            cartSummaryDiv.style.display = 'block'; // Make sure layout resets for mobile
+            if(window.innerWidth > 900) cartSummaryDiv.style.display = 'block';
+            else cartSummaryDiv.style.display = 'block'; // Or flex, managed by CSS
+            shippingProgressBox.style.display = 'block';
+
+            cart.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <img src="${item.image || 'https://via.placeholder.com/80'}" alt="${item.name}" class="product-image">
+                    </td>
+                    <td>
+                        <div class="product-name">${item.name}</div>
+                        <div class="product-sku">REF: ${item.id || 'N/A'}</div>
+                    </td>
+                    <td class="price">${parseFloat(item.price).toFixed(2)} DH</td>
+                    <td>
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn plus" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                    </td>
+                    <td class="price" style="font-weight:700">${(item.price * item.quantity).toFixed(2)} DH</td>
+                    <td>
+                        <button class="remove-btn" onclick="removeItem(${index})">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                `;
+                cartTableBody.appendChild(row);
+            });
+        }
+
+        function updateQuantity(index, change) {
+            if (cart[index].quantity + change > 0) {
+                cart[index].quantity += change;
+                updateCartStorage();
+                showToast('Cart updated');
+            }
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartStorage();
+            showToast('Item removed');
+        }
+
+        function updateCartStorage() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCalculations();
+        }
+
+        function updateCartCalculations() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Shipping Logic
+            let shipping = SHIPPING_COST;
+            if (subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0) {
+                shipping = 0;
+            }
+
+            // Update UI Numbers
+            cartCountElements.forEach(el => el.textContent = totalItems);
+            subtotalElement.textContent = `${subtotal.toFixed(2)} DH`;
+            
+            if (shipping === 0 && subtotal > 0) {
+                shippingElement.textContent = "Free";
+                shippingElement.style.color = "var(--gold)";
+                shippingElement.style.fontWeight = "bold";
+            } else {
+                shippingElement.textContent = `${shipping.toFixed(2)} DH`;
+                shippingElement.style.color = "inherit";
+            }
+
+            totalElement.textContent = `${(subtotal + shipping).toFixed(2)} DH`;
+            checkoutBtn.disabled = subtotal === 0;
+
+            // Update Free Shipping Progress Bar
+            updateShippingBar(subtotal);
+        }
+
+        function updateShippingBar(subtotal) {
+            const bar = document.getElementById('shippingBar');
+            const text = document.getElementById('shippingText');
+            
+            if (subtotal >= FREE_SHIPPING_THRESHOLD) {
+                bar.style.width = '100%';
+                text.innerHTML = '<i class="fas fa-truck"></i> You have qualified for <b>Free Shipping!</b>';
+            } else {
+                const percent = (subtotal / FREE_SHIPPING_THRESHOLD) * 100;
+                const remaining = (FREE_SHIPPING_THRESHOLD - subtotal).toFixed(0);
+                bar.style.width = `${percent}%`;
+                text.innerHTML = `Add <b>${remaining} DH</b> more to enjoy Free Shipping!`;
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initCart);
+    </script>
+</body>
+</html>
