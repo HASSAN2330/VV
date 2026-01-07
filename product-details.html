@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details - billaviluxe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/bvllogo/Asset1.png">
     <style>
         :root {
             --black: #0a0a0a;
@@ -363,84 +364,43 @@
             background-color: #4B5235;
             color: white;
             padding: 60px 0 20px;
+            margin-top: auto;
         }
-         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-          
-         
         .footer-section h3 {
             color: var(--gold);
             margin-bottom: 20px;
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--gold);
-        }
-
-        .footer-section p {
-            margin-bottom: 15px;
-            opacity: 0.8;
-            line-height: 1.7;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section ul li a {
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-            opacity: 0.8;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--gold);
-            opacity: 1;
-            padding-left: 5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
+        .social-icons { display: flex; gap: 15px; }
         .social-icons a {
             color: white;
-            font-size: 2.1rem;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
             transition: var(--transition);
-            opacity: 0.8;
         }
-
         .social-icons a:hover {
-            color: var(--gold);
+            background: var(--gold);
+            border-color: var(--gold);
             transform: translateY(-3px);
-            opacity: 1;
         }
-
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.7;
         }
 
@@ -788,34 +748,27 @@
 </main>
 
     <!-- Your existing footer -->
-  <footer class="main-footer">
+    
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                     <div class="logo"><img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
-                    
-                </div>
-                    <p style="margin-top: 70px; font-size: 1rem; text-align: center;">Premium beauty products for the modern, sophisticated individual.</p>
+                    <img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" style="height: 30px; margin-bottom: 15px;" />
+                    <p>Premium beauty products for the modern, sophisticated individual.</p>
                 </div>
                 <div class="footer-section">
                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="cart.html">Cart</a></li>
+                    <ul style="list-style: none; margin-top: 10px;">
+                        <li><a href="index.html" style="color: #ddd; text-decoration: none;">Home</a></li>
+                        <li><a href="cart.html" style="color: #ddd; text-decoration: none;">Cart</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
-                    <div class="social-icons">
-    <a href="https://www.facebook.com/BILLAVILUXE" target="_blank" rel="noopener noreferrer" class="social-link">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank" rel="noopener noreferrer" class="social-link">
-        <i class="fab fa-instagram"></i>
-    </a> 
-            <a href="https://wa.me/212630339238" target="_blank" rel="noopener noreferrer" class="social-link">
-     <i class="fab fa-whatsapp"></i>
- </a>
+                    <div class="social-icons" style="margin-top: 15px;">
+                        <a href="https://www.facebook.com/BILLAVILUXE" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank"><i class="fab fa-instagram"></i></a> 
+                        <a href="https://wa.me/212630339238" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
