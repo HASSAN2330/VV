@@ -1,11 +1,11 @@
 {
-  "name": "BILLAVILUXE",
-  "short_name": "BVL",
-  "description": "Elegance Redefined brand",
-  "start_url": "/",
+  "name": "BILLAVILUXE Premium Beauty",
+  "short_name": "BILLAVILUXE",
+  "description": "Premium beauty products for the modern, sophisticated individual.",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#0a0a0a",
+  "theme_color": "#4B5235",
   "icons": [
     {
       "src": "images/bvllogo/Asset1.png",
