@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - billaviluxe Cosmetics</title>
+    <title>Checkout - billaviluxe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/bvllogo/Asset1.png">
     <style>
         :root {
-            --primary-color: #000000;
-            --secondary-color: #D4AF37;
-            --accent-color: #FFD700;
-            --light-color: #f8f8f8;
-            --dark-color: #222222;
-            --text-color: #333333;
-            --light-gray: #f5f5f5;
-            --medium-gray: #e0e0e0;
-            --dark-gray: #777777;
+            --black: #0a0a0a;
             --gold: #c9a227;
             --light-gold: #e6c35c;
             --white: #f8f8f8;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #777777;
+            --danger: #d32f2f;
+            --success: #2ecc71;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -26,96 +25,62 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f9f9f9;
-            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
             line-height: 1.6;
-            padding-top: 70px;
+            background-color: #f9f9f9;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
-        /* Header Styles */
-         .main-header {
-    background: #4B5235;
-    backdrop-filter: blur(8px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(201, 162, 39, 0.2);
-    transition: var(--transition);
-}
+        /* ===== Header Styles (Matched) ===== */
+        .main-header {
+            background: #4B5235;
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            transition: var(--transition);
+        }
 
-.main-header.scrolled {
-    padding: 10px 0;
-    background-color: #4B5235;
-}
-
+        .main-header.scrolled {
+            padding: 10px 0;
+            background-color: #3d422b;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
             height: 40px;
-            width: 70px;
         }
-   .logo img { 
-             width: 220px;
- height: 40px;
- border-radius: 10px 10px 0 0;
- object-fit: cover;
-        }
-.main-nav ul {
-    display: flex;
-    gap: 2vw;
-    list-style: none;
-    align-items: center;
-}
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin: 0;
-            background: linear-gradient(to right, var(--gold), var(--light-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: var(--transition);
+        
+        .logo img { 
+            height: 40px;
+            object-fit: contain;
         }
 
-        .logo span {
-            font-size: 0.9rem;
-            color: darkgray;
-            letter-spacing: 1px;
-            font-weight: 300;
-            margin-bottom: -10px;
-        }
-
-
-        .mobile-menu-btn {
-     display: none;
-     background: none;
-     border: none;
-     color: var(--gold);
-     font-size: 1.5rem;
-     cursor: pointer;
- }
         .main-nav ul {
             display: flex;
             gap: 2vw;
@@ -124,11 +89,10 @@
         }
 
         .main-nav a {
-            color: rgba(0, 0, 0, 0.9);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            letter-spacing: 0.5px;
             position: relative;
             padding: 8px 0;
             transition: var(--transition);
@@ -145,50 +109,54 @@
             transition: width 0.4s ease;
         }
 
-        .main-nav a:hover {
-            color: var(--dark-color);
-        }
-
-        .main-nav a:hover::after {
-            width: 100%;
-        }
+        .main-nav a:hover::after { width: 100%; }
 
         .cart-link {
             display: flex;
             align-items: center;
             gap: 6px;
+            margin-left: 20px;
             position: relative;
-        }
-
-        .cart-link i {
-            font-size: 1.1rem;
-            color: rgba(0, 0, 0, 0.9);
-            transition: var(--transition);
+            color: white;
+            text-decoration: none;
         }
 
         .cart-count {
             background: var(--gold);
-            color: white;
-            width: 22px;
-            height: 22px;
+            color: var(--black);
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             position: absolute;
             top: -8px;
             right: -8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        /* Section Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== Checkout Page Styles ===== */
+        .checkout-section {
+            padding: 50px 0;
+            flex: 1;
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 40px;
-            font-size: 2rem;
-            color: var(--primary-color);
+            font-size: 2.2rem;
+            color: var(--black);
             position: relative;
             padding-bottom: 15px;
         }
@@ -201,484 +169,333 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: var(--secondary-color);
-        }
-
-        /* Checkout Page Styles */
-        .checkout-section {
-            padding: 80px 0;
-            min-height: 70vh;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
         }
 
         .checkout-container {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
             gap: 40px;
+            align-items: start;
         }
 
-        .checkout-form, .order-summary {
+        .checkout-box {
             background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
-        .order-summary {
-            height: fit-content;
-            position: sticky;
-            top: 100px;
+        .box-title {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+        .box-title i { color: var(--gold); }
+
+        /* Form Styles */
+        .form-group { margin-bottom: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--black);
         }
 
         .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group select {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 1px solid var(--medium-gray);
-            border-radius: 4px;
+            border-radius: 6px;
             font-family: inherit;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background: #fafafa;
         }
 
         .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--secondary-color);
+        .form-group select:focus {
+            border-color: var(--gold);
+            background: white;
             outline: none;
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
         }
 
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .phone-input {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--medium-gray);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .phone-input .prefix {
-            padding: 0 12px;
-            background: #f5f5f5;
-            height: 100%;
+        .phone-group { position: relative; }
+        .phone-prefix {
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            bottom: 1px;
+            background: #eee;
+            padding: 0 15px;
             display: flex;
             align-items: center;
             border-right: 1px solid var(--medium-gray);
-        }
-
-        .phone-input input {
-            flex: 1;
-            border: none;
-            padding: 12px;
-        }
-
-        .hint {
-            display: block;
-            margin-top: 5px;
+            border-radius: 6px 0 0 6px;
             color: var(--dark-gray);
-            font-size: 0.8rem;
+            font-weight: 600;
         }
+        .phone-group input { padding-left: 80px; }
 
+        /* Payment Styles */
         .payment-methods {
-            margin: 25px 0;
-            border: 1px solid var(--medium-gray);
-            border-radius: 8px;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
         .payment-option {
-            padding: 15px;
-            border-bottom: 1px solid var(--medium-gray);
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .payment-option:hover {
-            background-color: var(--light-gray);
-        }
-
-        .payment-option:last-child {
-            border-bottom: none;
-        }
-
-        .payment-option input {
-            margin-right: 10px;
-        }
-
-        .payment-option.coming-soon {
-            background-color: #f9f9f9;
-            color: var(--dark-gray);
-            cursor: not-allowed;
-        }
-
-        .payment-option[for="whatsapp"] {
-            background-color: #f8f8f8;
-            color: black;
-            border-radius: 4px;
-        }
-
-        .payment-option[for="whatsapp"]:hover {
-            background-color: #128C7E;
-            color: white;
-        }
-
-        .cash-notice {
-            background-color: #f8f8f8;
-            padding: 15px;
+            border: 1px solid var(--medium-gray);
             border-radius: 8px;
-            margin: 20px 0;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
-            color: var(--secondary-color);
+            gap: 15px;
         }
 
-        .cash-notice i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+        .payment-option:hover { border-color: var(--gold); background: rgba(201, 162, 39, 0.02); }
+        .payment-option.active { 
+            border-color: var(--gold); 
+            background: rgba(201, 162, 39, 0.05); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        .order-items {
-            margin-bottom: 30px;
+        .payment-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--gold);
+        }
+
+        .payment-label {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .payment-title { font-weight: 600; color: var(--black); }
+        .payment-desc { font-size: 0.85rem; color: var(--dark-gray); }
+
+        .payment-icon { font-size: 1.5rem; color: var(--gold); margin-left: auto; }
+
+        /* Order Summary Styles */
+        .order-summary {
+            position: sticky;
+            top: 100px;
+        }
+
+        .order-items-container {
             max-height: 300px;
             overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 5px;
         }
 
         .order-item {
             display: flex;
             align-items: center;
+            gap: 15px;
             padding: 15px 0;
-            border-bottom: 1px solid var(--medium-gray);
+            border-bottom: 1px dashed var(--medium-gray);
         }
 
-        .order-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-image {
+        .item-img {
             width: 60px;
             height: 60px;
-            margin-right: 15px;
-            border-radius: 4px;
-            overflow: hidden;
-            background-color: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .item-image img {
-            width: 100%;
-            height: 100%;
+            border-radius: 6px;
             object-fit: cover;
+            border: 1px solid var(--light-gray);
         }
 
-        .item-details {
-            flex: 1;
-        }
+        .item-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
+        .item-info p { font-size: 0.85rem; color: var(--dark-gray); }
 
-        .item-details h4 {
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
-
-        .item-details p {
-            color: var(--dark-gray);
-            font-size: 0.9rem;
-        }
-
-        .item-total {
+        .item-price {
+            margin-left: auto;
             font-weight: 600;
-        }
-
-        .order-totals {
-            border-top: 1px solid var(--medium-gray);
-            padding-top: 20px;
+            color: var(--gold);
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
-        }
-
-        .summary-row.total {
-            font-weight: bold;
-            font-size: 1.1rem;
-            border-top: 1px solid var(--medium-gray);
-            padding-top: 15px;
-            margin-top: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            padding: 12px 25px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .place-order-btn {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.1rem;
-            margin-top: 20px;
-        }
-
-        .empty-cart-message {
-            text-align: center;
-            padding: 30px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
             color: var(--dark-gray);
         }
 
-        .empty-cart-message i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--medium-gray);
-        }
-
-        /* Footer Styles */
-        .main-footer {
-    background-color: #4B5235;
-    color: white;
-    padding: 60px 0 20px;
-}
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-color);
-        }
-
-        .footer-section p {
-            margin-bottom: 15px;
-            color: #ccc;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent-color);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
+        .summary-row.total {
+            margin-top: 20px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
+            border-top: 2px solid var(--medium-gray);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--black);
         }
 
-        /* Alert Styles */
-        .custom-alert-overlay {
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold), #b89322);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-submit:disabled {
+            background: var(--medium-gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Success Modal */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
             display: none;
-            justify-content: center;
             align-items: center;
-            z-index: 1000;
-            animation: fadeIn 0.3s ease-out;
+            justify-content: center;
         }
 
-        .custom-alert-box {
+        .modal-content {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
-            transform: translateY(-20px);
-            animation: slideUp 0.3s ease-out;
-        }
-
-        .alert-content {
+            padding: 40px;
+            border-radius: 15px;
             text-align: center;
+            max-width: 450px;
+            width: 90%;
+            animation: slideUp 0.4s ease;
         }
 
-        .alert-icon {
-            width: 48px;
-            height: 48px;
-            color: #4CAF50;
-            margin-bottom: 1rem;
-        }
-
-        .alert-title {
-            color: #2c3e50;
-            margin: 0 0 0.5rem 0;
-            font-size: 1.5rem;
-        }
-
-        .alert-message {
-            color: #666;
-            line-height: 1.6;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .alert-button {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .alert-button:hover {
-            background: #45a049;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: #e8f5e9;
+            color: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 20px;
         }
 
         @keyframes slideUp {
-            from { transform: translateY(20px); }
-            to { transform: translateY(0); }
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Responsive Styles */
+        /* Footer (Matched) */
+        .main-footer {
+            background-color: #4B5235;
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: auto;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a {
+            color: white;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 900px) {
+            .checkout-container { grid-template-columns: 1fr; }
+            .order-summary { position: static; order: -1; margin-bottom: 30px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+        }
+
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
+            .mobile-menu-btn { display: block; z-index: 1001; }
             .main-nav {
                 position: fixed;
-                top: 70px;
-                left: -100%;
+                top: 0;
+                right: -100%;
                 width: 80%;
-                height: calc(100vh - 70px);
-                background: rgba(10, 10, 10, 0.98);
-                backdrop-filter: blur(12px);
-                flex-direction: column;
-                padding: 30px;
-                transition: all 0.4s ease;
+                height: 100vh;
+                background: #1a1a1a;
+                padding: 80px 30px;
+                transition: 0.4s ease;
+                z-index: 1000;
             }
-            
-            .main-nav.active {
-                left: 0;
-            }
-            
-            .main-nav ul {
-                flex-direction: column;
-                gap: 25px;
-            }
-            
-            .main-nav a {
-                font-size: 1.1rem;
-                padding: 10px 0;
-                color: white;
-            }
-
-            .checkout-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .order-summary {
-                position: static;
-                margin-top: 40px;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
+            .main-nav.active { right: 0; }
+            .main-nav ul { flex-direction: column; align-items: flex-start; gap: 25px; }
+            .main-nav a { color: white; }
+            .cart-link { display: none; }
         }
     </style>
 </head>
 <body>
-     <header class="main-header" id="mainHeader">
+    
+    <header class="main-header" id="mainHeader">
         <div class="container">
             <div class="header-content">
-               <div class="logo"><img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
-    
-</div> 
+               <div class="logo">
+                   <img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
+                </div> 
                 <button class="mobile-menu-btn" id="menuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -700,115 +517,112 @@
             </div>
         </div>
     </header>
+
     <section class="checkout-section">
         <div class="container">
             <h2 class="section-title">Checkout</h2>
             
             <div class="checkout-container">
                 <div class="checkout-form">
-                    <h3>Delivery Information</h3>
-                    <form id="checkout-form">
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <div class="phone-input">
-                                <span class="prefix">+212</span>
-                                <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" title="Please enter a 9-digit Moroccan phone number" required placeholder="6XX XXX XXX">
-                            </div>
-                            <small class="hint">Enter your 9-digit phone number (without +212)</small>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="city">City *</label>
-                            <select id="city" name="city" required>
-                                <option value="">Select your city</option>
-                                <option value="Casablanca">Casablanca</option>
-                                <option value="Rabat">Rabat</option>
-                                <option value="Marrakech">Marrakech</option>
-                                <option value="Fes">Fes</option>
-                                <option value="Tangier">Tangier</option>
-                                <option value="Agadir">Agadir</option>
-                                <option value="Meknes">Meknes</option>
-                                <option value="Oujda">Oujda</option>
-                                <option value="Kenitra">Kenitra</option>
-                                <option value="Tetouan">Tetouan</option>
-                                <option value="Safi">Safi</option>
-                                <option value="El Jadida">El Jadida</option>
-                                <option value="Beni Mellal">Beni Mellal</option>
-                                <option value="Nador">Nador</option>
-                                <option value="Taza">Taza</option>
-                                <option value="Khouribga">Khouribga</option>
-                                <option value="Mohammedia">Mohammedia</option>
-                                <option value="Laayoune">Laayoune</option>
-                                <option value="Dakhla">Dakhla</option>
-                                <option value="Essaouira">Essaouira</option>
-                                <option value="Tiznit">Tiznit</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="street">Street *</label>
-                            <input type="text" id="street" name="street" required placeholder="Street name">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="home-number">Home Number *</label>
-                            <input type="text" id="home-number" name="home-number" required placeholder="Building number">
-                        </div>
-                        
-                        <h3>Payment Method</h3>
-                        
-                        <div class="payment-methods">
-                            <div class="payment-option" for="whatsapp">
-                                <input type="radio" id="whatsapp" name="payment" value="whatsapp">
-                                <label for="whatsapp">Order via WhatsApp</label>
-                            </div>
-                            <div class="payment-option">
-                                <input type="radio" id="cash" name="payment" value="cash" checked>
-                                <label for="cash">Cash on Delivery</label>
+                    <form id="checkoutForm">
+                        <div class="checkout-box">
+                            <div class="box-title">
+                                <i class="fas fa-map-marker-alt"></i> Shipping Information
                             </div>
                             
-                            <div class="payment-option coming-soon">
-                                <input type="radio" id="credit-card" name="payment" value="credit-card" disabled>
-                                <label for="credit-card">Credit Card (Coming Soon)</label>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" name="firstName" required placeholder="Ahmed">
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" name="lastName" required placeholder="Benali">
+                                </div>
                             </div>
-                            <div class="payment-option coming-soon">
-                                <input type="radio" id="bank-transfer" name="payment" value="bank-transfer" disabled>
-                                <label for="bank-transfer">Bank Transfer (Coming Soon)</label>
+
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <div class="phone-group">
+                                    <span class="phone-prefix">+212</span>
+                                    <input type="tel" name="phone" id="phone" required placeholder="6XX XXX XXX" maxlength="9">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>City</label>
+                                <select name="city" required>
+                                    <option value="" disabled selected>Select your city</option>
+                                    <option value="Casablanca">Casablanca</option>
+                                    <option value="Rabat">Rabat</option>
+                                    <option value="Marrakech">Marrakech</option>
+                                    <option value="Tangier">Tangier</option>
+                                    <option value="Agadir">Agadir</option>
+                                    <option value="Fes">Fes</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" name="address" required placeholder="Street address, Apartment, etc.">
                             </div>
                         </div>
-                        
-                        <div class="cash-notice">
-                            <p><i class="fas fa-info-circle"></i> You will pay in cash when you receive your order</p>
+
+                        <div class="checkout-box" style="margin-top: 30px;">
+                            <div class="box-title">
+                                <i class="fas fa-wallet"></i> Payment Method
+                            </div>
+                            
+                            <div class="payment-methods">
+                                <label class="payment-option active">
+                                    <input type="radio" name="payment" value="cod" checked>
+                                    <div class="payment-label">
+                                        <span class="payment-title">Cash on Delivery (COD)</span>
+                                        <span class="payment-desc">Pay when you receive your order</span>
+                                    </div>
+                                    <i class="fas fa-money-bill-wave payment-icon"></i>
+                                </label>
+
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="whatsapp">
+                                    <div class="payment-label">
+                                        <span class="payment-title">Order via WhatsApp</span>
+                                        <span class="payment-desc">Complete your order with an agent</span>
+                                    </div>
+                                    <i class="fab fa-whatsapp payment-icon"></i>
+                                </label>
+                            </div>
                         </div>
-                        
-                        <button type="submit" class="btn place-order-btn">Complete Order</button>
+
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            Complete Order
+                        </button>
                     </form>
                 </div>
                 
                 <div class="order-summary">
-                    <h3>Your Order</h3>
-                    <div class="order-items" id="order-items">
-                        <!-- Cart items will be populated here -->
-                    </div>
-                    
-                    <div class="order-totals">
-                        <div class="summary-row">
-                            <span>Subtotal</span>
-                            <span id="order-subtotal">0.00 DH</span>
+                    <div class="checkout-box">
+                        <div class="box-title">
+                            <i class="fas fa-shopping-bag"></i> Your Order
                         </div>
-                        <div class="summary-row">
-                            <span>Shipping</span>
-                            <span id="order-shipping">0 DH</span>
-                        </div>
-                        <div class="summary-row total">
-                            <span>Total</span>
-                            <span id="order-total">0.00 DH</span>
+                        
+                        <div class="order-items-container" id="orderItems">
+                            </div>
+                        
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="subtotalDisplay">0.00 DH</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="shippingDisplay">--</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="totalDisplay">0.00 DH</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -816,50 +630,37 @@
         </div>
     </section>
 
-    <!-- Single Professional Alert HTML -->
-    <div class="custom-alert-overlay" id="professional-alert" aria-hidden="true">
-        <div class="custom-alert-box" role="dialog" aria-modal="true">
-            <div class="alert-content">
-                <svg class="alert-icon" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/>
-                </svg>
-                <h3 class="alert-title">Order Received!</h3>
-                <p class="alert-message" id="alert-message">We've received your order! Please check your WhatsApp to complete the payment.</p>
-                <div class="alert-actions">
-                    <button class="alert-button" id="alert-button">Continue</button>
-                </div>
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check"></i>
             </div>
+            <h2 style="margin-bottom: 10px;">Order Placed!</h2>
+            <p style="color: #666; margin-bottom: 25px;">Thank you for your order. We will contact you shortly to confirm delivery details.</p>
+            <button class="btn-submit" onclick="window.location.href='index.html'" style="margin: 0;">Back to Home</button>
         </div>
     </div>
 
-     <footer class="main-footer">
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                     <div class="logo"><img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" />
-                    
-                </div>
-                    <p style="margin-top: 70px; font-size: 1rem; text-align: center;">Premium beauty products for the modern, sophisticated individual.</p>
+                    <img src="images/bvllogo/Asset1.png" alt="billaviluxe logo" style="height: 30px; margin-bottom: 15px;" />
+                    <p>Premium beauty products for the modern, sophisticated individual.</p>
                 </div>
                 <div class="footer-section">
                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="cart.html">Cart</a></li>
+                    <ul style="list-style: none;">
+                        <li><a href="index.html" style="color: #ddd; text-decoration: none;">Home</a></li>
+                        <li><a href="cart.html" style="color: #ddd; text-decoration: none;">Cart</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
-                    <div class="social-icons">
-    <a href="https://www.facebook.com/BILLAVILUXE" target="_blank" rel="noopener noreferrer" class="social-link">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank" rel="noopener noreferrer" class="social-link">
-        <i class="fab fa-instagram"></i>
-    </a> 
-            <a href="https://wa.me/212630339238" target="_blank" rel="noopener noreferrer" class="social-link">
-     <i class="fab fa-whatsapp"></i>
- </a>
+                    <div class="social-icons" style="margin-top: 15px;">
+                        <a href="https://www.facebook.com/BILLAVILUXE" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank"><i class="fab fa-instagram"></i></a> 
+                        <a href="https://wa.me/212630339238" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -870,267 +671,164 @@
     </footer>
 
     <script>
-        // Configuration
-        const CONFIG = {
-            BUSINESS: {
-                NAME: "billaviluxe Cosmetics",
-                PHONE: "212630339238",
-                CURRENCY: "DH",
-                WHATSAPP_API_KEY: "8886853" // For COD orders
-            },
-            SHIPPING: 0
-        };
+        // CONFIG
+        const BUSINESS_PHONE = "212630339238"; 
+        const SHIPPING_COST = 40;
+        const FREE_SHIPPING_THRESHOLD = 500;
 
-        // Cart Manager
-        class CartManager {
-            static getCart() {
-                return JSON.parse(localStorage.getItem('cart')) || [];
-            }
+        // STATE
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Elements
+        const orderItemsContainer = document.getElementById('orderItems');
+        const subtotalDisplay = document.getElementById('subtotalDisplay');
+        const shippingDisplay = document.getElementById('shippingDisplay');
+        const totalDisplay = document.getElementById('totalDisplay');
+        const checkoutForm = document.getElementById('checkoutForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successModal = document.getElementById('successModal');
+        
+        // Header Scroll
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        });
 
-            static getCartTotal() {
-                const cart = this.getCart();
-                return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            }
+        // Mobile Menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        menuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuBtn.innerHTML = mainNav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
 
-            static getCartCount() {
-                const cart = this.getCart();
-                return cart.reduce((sum, item) => sum + item.quantity, 0);
-            }
+        // Highlight Active Payment
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
+                e.target.closest('.payment-option').classList.add('active');
+            });
+        });
 
-            static clearCart() {
-                localStorage.removeItem('cart');
-                this.updateCartUI();
-            }
+        // Phone Input formatter
+        document.getElementById('phone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9);
+        });
 
-            static updateCartUI() {
-                const count = this.getCartCount();
-                document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+        // Init Logic
+        function initCheckout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Redirecting to products.");
+                window.location.href = 'index.html#products';
+                return;
             }
+            renderOrderSummary();
+            updateCartCount();
         }
 
-        // Professional Alert System
-        class AlertSystem {
-            static show(config) {
-                const alert = document.getElementById('professional-alert');
-                const title = alert.querySelector('.alert-title');
-                const message = alert.querySelector('.alert-message');
-                const button = alert.querySelector('.alert-button');
-                
-                title.textContent = config.title;
-                message.textContent = config.message;
-                
-                button.onclick = () => {
-                    this.hide();
-                    if (config.onClose) config.onClose();
-                };
-
-                alert.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                button.focus();
-            }
-
-            static hide() {
-                const alert = document.getElementById('professional-alert');
-                alert.style.display = 'none';
-                document.body.style.overflow = '';
-            }
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
         }
 
-        // Order Processor
-        class OrderProcessor {
-            static async process(e) {
-                e.preventDefault();
-                const submitBtn = document.querySelector('.place-order-btn');
-                
-                try {
-                    const formData = this.getFormData();
-                    this.validateForm(formData);
-                    
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-                    
-                    if (formData.paymentMethod === 'cash') {
-                        // Cash on delivery - use CallMeBot API
-                        await this.sendCODNotification(formData);
-                        
-                        AlertSystem.show({
-                            title: "COD Order Received!",
-                            message: "We've received your cash on delivery order!",
-                            onClose: () => {
-                                CartManager.clearCart();
-                                window.location.href = `thank-you.html?order=${formData.orderNumber}`;
-                            }
-                        });
-                    } else if (formData.paymentMethod === 'whatsapp') {
-                        // WhatsApp order - open WhatsApp directly
-                        this.processWhatsAppOrder(formData);
-                    }
-                    
-                } catch (error) {
-                    console.error('Order Error:', error);
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Complete Order';
-                    AlertSystem.show({
-                        title: "Order Issue",
-                        message: error.message || "Please check your order details",
-                    });
-                }
-            }
-            
-            static getFormData() {
-                const cart = CartManager.getCart();
-                
-                return {
-                    email: document.getElementById('email').value.trim(),
-                    phone: document.getElementById('phone').value.trim(),
-                    city: document.getElementById('city').value.trim(),
-                    street: document.getElementById('street').value.trim(),
-                    homeNumber: document.getElementById('home-number').value.trim(),
-                    paymentMethod: document.querySelector('input[name="payment"]:checked').value,
-                    orderNumber: 'LX-' + Date.now().toString().slice(-6),
-                    items: cart
-                };
-            }
+        function renderOrderSummary() {
+            let subtotal = 0;
+            orderItemsContainer.innerHTML = '';
 
-            static validateForm(formData) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-                if (!emailRegex.test(formData.email)) throw new Error('Please enter a valid email address');
-                if (formData.phone.length !== 9) throw new Error('Phone number must be 9 digits');
-                if (!formData.city || !formData.street || !formData.homeNumber) {
-                    throw new Error('Please fill all address fields');
-                }
-                if (formData.items.length === 0) {
-                    throw new Error('Your cart is empty');
-                }
-            }
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
 
-            static async sendCODNotification(formData) {
-                try {
-                    const message = this.createWhatsAppMessage(formData);
-                    const apiUrl = `https://api.callmebot.com/whatsapp.php?phone=${CONFIG.BUSINESS.PHONE}&text=${encodeURIComponent(message)}&apikey=${CONFIG.BUSINESS.WHATSAPP_API_KEY}`;
-                    
-                    // Try API first
-                    await fetch(apiUrl);
-                } catch (error) {
-                    console.error('COD Notification Error:', error);
-                }
-            }
-            
-            static processWhatsAppOrder(formData) {
-                const message = this.createWhatsAppMessage(formData);
-                const whatsappUrl = `https://wa.me/${CONFIG.BUSINESS.PHONE}?text=${encodeURIComponent(message)}`;
-                
-                AlertSystem.show({
-                    title: "Redirecting to WhatsApp",
-                    message: "Please complete your order by sending the pre-filled message on WhatsApp.",
-                    onClose: () => {
-                        // Open WhatsApp in a new tab
-                        window.open(whatsappUrl, '_blank');
-                        // Clear cart and redirect to thank you page
-                        CartManager.clearCart();
-                        window.location.href = `thank-you.html?order=${formData.orderNumber}`;
-                    }
-                });
-            }
-            
-            static createWhatsAppMessage(formData) {
-                const itemsText = formData.items.map(item =>
-                    `➤ ${item.name} (${item.quantity}x) - ${(item.price * item.quantity).toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}`
-                ).join('%0A');
-                
-                const subtotal = formData.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                const total = subtotal + CONFIG.SHIPPING;
-                
-                return `*NEW ORDER - ${CONFIG.BUSINESS.NAME}*%0A%0A` +
-                    `*Order #:* ${formData.orderNumber}%0A` +
-                    `*Payment Method:* ${formData.paymentMethod.toUpperCase()}%0A` +
-                    `*Email:* ${formData.email}%0A` +
-                    `*Phone:* +212${formData.phone}%0A` +
-                    `*Address:* ${formData.street} No.${formData.homeNumber}, ${formData.city}%0A%0A` +
-                    `*Items:*%0A${itemsText}%0A%0A` +
-                    `*Subtotal:* ${subtotal.toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}%0A` +
-                    `*Shipping:* ${CONFIG.SHIPPING.toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}%0A` +
-                    `*Total:* ${total.toFixed(2)} ${CONFIG.BUSINESS.CURRENCY}`;
-            }
-        }
-
-        // UI Initialization
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu
-            const menuBtn = document.getElementById('menuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            if (menuBtn && mainNav) {
-                menuBtn.addEventListener('click', () => {
-                    mainNav.classList.toggle('active');
-                    menuBtn.innerHTML = mainNav.classList.contains('active') 
-                        ? '<i class="fas fa-times"></i>' 
-                        : '<i class="fas fa-bars"></i>';
-                });
-            }
-
-            // Phone Input Formatting
-            document.getElementById('phone').addEventListener('input', function() {
-                this.value = this.value.replace(/\D/g, '').slice(0, 9);
+                const div = document.createElement('div');
+                div.className = 'order-item';
+                div.innerHTML = `
+                    <img src="${item.image || 'https://via.placeholder.com/60'}" class="item-img" alt="${item.name}">
+                    <div class="item-info">
+                        <h4>${item.name}</h4>
+                        <p>Qty: ${item.quantity} x ${item.price} DH</p>
+                    </div>
+                    <div class="item-price">${itemTotal.toFixed(2)} DH</div>
+                `;
+                orderItemsContainer.appendChild(div);
             });
 
-            // Update cart UI
-            CartManager.updateCartUI();
+            // Calculations
+            let shipping = (subtotal >= FREE_SHIPPING_THRESHOLD) ? 0 : SHIPPING_COST;
+            let total = subtotal + shipping;
+
+            // Update UI
+            subtotalDisplay.textContent = subtotal.toFixed(2) + " DH";
             
-            // Render cart items
-            function renderCartItems() {
-                const cart = CartManager.getCart();
-                const orderItemsContainer = document.getElementById('order-items');
-                const subtotalElement = document.getElementById('order-subtotal');
-                const totalElement = document.getElementById('order-total');
-                
-                // Clear existing items
-                orderItemsContainer.innerHTML = '';
-                
-                if (cart.length === 0) {
-                    orderItemsContainer.innerHTML = `
-                        <div class="empty-cart-message">
-                            <i class="fas fa-shopping-cart"></i>
-                            <p>Your cart is empty</p>
-                        </div>
-                    `;
-                    subtotalElement.textContent = '0.00 DH';
-                    totalElement.textContent = '0.00 DH';
-                    return;
-                }
-                
-                // Add cart items to order summary
-                cart.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'order-item';
-                    itemElement.innerHTML = `
-                        <div class="item-image">
-                            <i class="${item.icon}" style="color: #d4af37; font-size: 24px;"></i>
-                        </div>
-                        <div class="item-details">
-                            <h4>${item.name}</h4>
-                            <p>${item.variant || ''}</p>
-                        </div>
-                        <div class="item-total">${(item.price * item.quantity).toFixed(2)} DH</div>
-                    `;
-                    orderItemsContainer.appendChild(itemElement);
-                });
-                
-                // Calculate totals
-                const subtotal = CartManager.getCartTotal();
-                const total = subtotal + CONFIG.SHIPPING;
-                
-                // Update totals in the UI
-                subtotalElement.textContent = subtotal.toFixed(2) + ' DH';
-                totalElement.textContent = total.toFixed(2) + ' DH';
+            if (shipping === 0) {
+                shippingDisplay.innerHTML = '<span style="color:var(--success); font-weight:bold;">FREE</span>';
+            } else {
+                shippingDisplay.textContent = shipping.toFixed(2) + " DH";
             }
             
-            // Render cart on page load
-            renderCartItems();
+            totalDisplay.textContent = total.toFixed(2) + " DH";
+        }
+
+        // Handle Submit
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Form submission
-            document.getElementById('checkout-form').addEventListener('submit', (e) => OrderProcessor.process(e));
+            if (cart.length === 0) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+
+            const formData = new FormData(checkoutForm);
+            const data = Object.fromEntries(formData.entries());
+            const paymentMethod = data.payment;
+
+            // Prepare Order Details
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let shipping = (subtotal >= FREE_SHIPPING_THRESHOLD) ? 0 : SHIPPING_COST;
+            let total = subtotal + shipping;
+
+            const orderDetails = {
+                id: 'ORD-' + Date.now().toString().slice(-6),
+                customer: `${data.firstName} ${data.lastName}`,
+                phone: `+212${data.phone}`,
+                address: `${data.address}, ${data.city}`,
+                items: cart,
+                total: total
+            };
+
+            if (paymentMethod === 'whatsapp') {
+                sendWhatsAppOrder(orderDetails);
+            } else {
+                // Cash on Delivery
+                setTimeout(() => {
+                    successModal.style.display = 'flex';
+                    localStorage.removeItem('cart'); // Clear cart
+                }, 1000);
+            }
         });
+
+        function sendWhatsAppOrder(order) {
+            let itemsList = order.items.map(i => `- ${i.name} (${i.quantity})`).join('%0A');
+            
+            let message = `*NEW ORDER: ${order.id}*%0A` +
+                `Name: ${order.customer}%0A` +
+                `Phone: ${order.phone}%0A` +
+                `Address: ${order.address}%0A` +
+                `------------------%0A` +
+                `*Items:*%0A${itemsList}%0A` +
+                `*Total: ${order.total.toFixed(2)} DH*%0A` +
+                `------------------%0A` +
+                `Payment: WhatsApp Request`;
+
+            let url = `https://wa.me/${BUSINESS_PHONE}?text=${message}`;
+            
+            // Clear cart and redirect
+            localStorage.removeItem('cart');
+            window.open(url, '_blank');
+            window.location.href = 'index.html'; 
+        }
+
+        // Run
+        document.addEventListener('DOMContentLoaded', initCheckout);
     </script>
 </body>
 </html>
