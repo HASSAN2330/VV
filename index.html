@@ -1,1147 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILLAVILUXE - Premium Beauty Products</title>
+    <title>BILLAVILUXE | الصفحة الرئيسية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/bvllogo/Asset1.png">
-    <meta name="theme-color" content="#000000">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="images/bvllogo/Asset1.png" type="image/png">
-<link rel="apple-touch-icon" href="images/bvllogo/Asset1.png">
-    
     <style>
-        :root {
-            --black: #0a0a0a;
-            --gold: #c9a227;
-            --light-gold: #e6c35c;
-            --white: #ffffff;
-            --off-white: #f9f9f9;
-            --dark-green: #4B5235;
-            --light-gray: #f5f5f5;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: #333;
-            line-height: 1.7;
-            background-color: var(--off-white);
+            background: #FFFCF3;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             overflow-x: hidden;
         }
-
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.5px;
-        }
-
+        
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* ===== Header ===== */
-        .main-header {
-            background: rgba(75, 82, 53, 0.85);
-            backdrop-filter: blur(10px);
-            position: fixed;
+            max-width: 900px;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
-            transition: var(--transition);
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .main-header.scrolled {
-            padding: 10px 0;
-            background-color: var(--dark-green);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            height: 40px;
-        }
-
-        .logo img { 
-            height: 25px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* Navigation */
-        .main-nav ul {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .main-nav a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        
+        .welcome-text {
+            margin-bottom: 60px;
             position: relative;
-            padding: 5px 0;
-            transition: var(--transition);
+            padding: 20px;
         }
-
-        .main-nav a::after {
+        
+        .fade-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ffd700, #ffaa00, #ffd700);
+            background-size: 100% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 2s ease-in-out, shine 1s linear infinite;
+            line-height: 1.3;
+        }
+        
+        .brand-name {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.4rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn-beauty {
+            background: linear-gradient(135deg, #FFF8AE, #93731F);
+            color: #fff;
+        }
+        
+        .btn-clothing {
+            background: linear-gradient(135deg, #5D8E9D, #1C6468);
+            color: white;
+        }
+        
+        .btn-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover .btn-icon {
+            transform: scale(1.2);
+        }
+        
+        .btn-text {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .btn-description {
+            font-size: 0.6rem;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+        
+        .btn::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .main-nav a:hover {
-            color: var(--gold);
-        }
-
-        .main-nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Desktop Cart Icon */
-        .cart-link {
-            position: relative;
-            color: white;
-            font-size: 1.2rem;
-            margin-left: 15px;
-        }
-
-        .cart-count {
-            background: var(--gold);
-            color: var(--black);
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.65rem;
-            font-weight: 700;
-            position: absolute;
-            top: -8px;
-            right: -8px;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--gold);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        /* ===== Hero Section ===== */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-
-        .video-container {
-            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 35px rgba(255, 215, 0, 0.6); }
+        }
+        
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
             z-index: -1;
         }
-
-        #bg-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .overlay {
+        
+        .circle {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 20px;
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--gold), #fff, var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: rgba(255,255,255,0.9);
-            font-weight: 300;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold), var(--light-gold));
-            color: var(--black);
-            padding: 16px 45px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: var(--transition);
-            text-decoration: none;
-            box-shadow: 0 5px 25px rgba(201, 162, 39, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.6);
-        }
-
-        /* ===== Sections General ===== */
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-            font-size: 2.8rem;
-            color: var(--black);
-            position: relative;
-        }
-
-        .section-title span {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        /* ===== Products ===== */
-        .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.product-card {
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 5px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    transition: var(--transition);
-    position: relative;
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-}
-
-.product-card img {
-    width: 100%;
-    height: 350px;
-    border-radius: 10px 10px 0 0;
-    object-fit: cover;
-    border-bottom: 1px solid var(--light-gray);
-}
-
-.product-card .product-info {
-    padding: 20px;
-}
-
-.product-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    justify-self: center;
-    color: var(--black);
-}
-
-.price {
-    font-size: 1.2rem;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.add-to-cart {
-    background-color: var(--black);
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: var(--transition);
-    width: 100%;
-}
-
-.add-to-cart:hover {
-    background-color: var(--gold);
-    color: var(--black);
-}
-
-        /* ===== Footer ===== */
-        .main-footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 80px 0 30px;
-            border-top: 5px solid var(--gold);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-
-        .footer-section h3 {
-            color: var(--gold);
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border-radius: 50%;
-            text-decoration: none;
-        }
-
-        .social-icons a:hover {
-            background: var(--gold);
-            color: var(--black);
-            transform: translateY(-5px);
-        }
-
-        .newsletter-form {
-            display: flex;
-            margin-top: 20px;
+            background: rgba(255, 215, 0, 0.05);
         }
         
-        .newsletter-form input {
-            padding: 12px;
-            width: 70%;
-            border: none;
-            background: rgba(255,255,255,0.1);
-            color: white;
-        }
-
-        .newsletter-form button {
-            width: 30%;
-            border: none;
-            background: var(--gold);
-            color: var(--black);
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-
-        /* ===== Floating Elements ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 999;
-            transition: var(--transition);
-            text-decoration: none;
+        .circle:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: 10%;
+            left: 5%;
+            animation: float 8s infinite ease-in-out;
         }
         
-        .whatsapp-float:hover {
-            transform: scale(1.1);
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            right: 5%;
+            animation: float 10s infinite ease-in-out reverse;
         }
-
-        .floating-cart {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            background: var(--gold);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
-            color: var(--black);
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
-
-        .floating-cart .cart-count {
-            top: 0;
-            right: 0;
-            background: var(--black);
-            color: var(--gold);
-        }
-
-        /* Toast Styles (Matched to Code 1 but ID adapted for Code 2 script) */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background-color: var(--black);
-            color: var(--gold);
-            padding: 15px 30px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1002;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            opacity: 0;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(-50px);
-            opacity: 1;
-        }
-
-        /* Reveal Animation */
-        .reveal {
-            position: relative;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 1s all ease;
-        }
-        .reveal.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== Responsive ===== */
+        
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            
-            .main-nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                height: 100vh;
-                background: var(--black);
-                padding: 80px 40px;
-                transition: 0.4s ease;
+            .fade-text {
+                font-size: 1.5rem;
             }
             
-            .main-nav.active { right: 0; }
-            
-            .main-nav ul {
-                flex-direction: column;
-                align-items: flex-start;
+            .brand-name {
+                font-size: 2.5rem;
             }
-
-            .main-nav a { font-size: 1.2rem; }
             
-            .cart-link { display: none; } 
-            .floating-cart { display: flex; } 
+            .btn {
+                width: 180px;
+                height: 180px;
+            }
             
-            .hero h2 { font-size: 2.5rem; }
-            .section-title { font-size: 2rem; }
+            .btn-text {
+                font-size: 1.3rem;
+            }
             
-            .product-image-box { height: 250px; }
+            .btn-icon {
+                font-size: 3rem;
+            }
         }
         
+        @media (max-width: 480px) {
+            .fade-text {
+                font-size: 2rem;
+            }
+            
+            .brand-name {
+                font-size: 2.8rem;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+            }
+            
+            .btn {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .btn-text {
+                font-size: 1.1rem;
+            }
+            
+            .btn-icon {
+                font-size: 2.5rem;
+            }
+        }
         
-        /* ===== Testimonials (New) ===== */
-        .testimonials {
-            background-color: var(--white);
+        .footer {
+            margin-top: 50px;
             text-align: center;
+            color: black;
+            font-size: 0.7rem;
         }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            padding: 40px;
-            background: var(--off-white);
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .testimonial-card i {
-            color: var(--gold);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-card p {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .testimonial-card h4 {
-            font-size: 1.1rem;
-            color: var(--black);
-        }
-        
-        /* ===== About ===== */
-        .about {
-            background-color: var(--dark-green);
-            color: white;
-            text-align: center;
-            position: relative;
-            transition: var(--transition);
-            overflow: hidden;
-        }
-
-        .about .section-title {
-            color: var(--gold);
-        }
-
-        .about p {
-            max-width: 700px;
-            margin: 0 auto 20px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-
     </style>
 </head>
 <body>
-
-    <header class="main-header" id="mainHeader">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="images/bvllogo/Asset1.png" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='block'" alt="billaviluxe logo" />
-                    <h1 id="text-logo" style="display:none; color:var(--gold); font-size:1.5rem;">BILLAVILUXE</h1>
-                </div>
-
-                <nav class="main-nav" id="mainNav">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li>
-                            <a href="cart.html" class="cart-link">
-                                <i class="fas fa-shopping-bag"></i>
-                                <span class="cart-count">0</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <button class="mobile-menu-btn" id="menuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <a href="cart.html" class="floating-cart">
-        <i class="fas fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
-    </a>
-
-    <a href="https://wa.me/212630339238" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <section class="hero">
-        <div class="video-container">
-            <video id="bg-video" autoplay muted loop playsinline></video>
-            <div class="overlay"></div>
+    <div class="decoration">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    
+    <div class="container">
+        <div class="welcome-text">
+            <div class="fade-text">  Bienvenue en</div>
+            <div class="brand-name">BILLAVILUXE</div>
         </div>
         
-        <div class="hero-content">
-            <h2>Elegance Redefined</h2>
-            <p>اكتشفي سر الجمال الخالد مع مجموعتنا المختارة بعناية</p>
-            <a href="#products" class="btn">Shop The Collection</a>
+        <div class="buttons-container">
+            <a href="beautypdc.html" class="btn btn-beauty">
+                <i class="fas fa-spa btn-icon"></i>
+                <span class="btn-text">منتجات التجميل</span>
+                <span class="btn-description">Beauty Products</span>
+            </a>
+            
+            <a href="clthpdc.html" class="btn btn-clothing">
+                <i class="fas fa-clock btn-icon"></i>
+                <span class="btn-text"> ساعات نسائية</span>
+                <span class="btn-description">Woman's Watches </span>
+            </a>
         </div>
-    </section>
-
-    <section id="products" class="products section-padding">
-  <div class="container">
-    <div class="section-title reveal">
-      <span>Exclusive</span>
-      <h2>Our Products</h2>
-    </div>
-
-    <!-- المنتجات ستُضاف من JS -->
-    <div class="product-grid" id="productGrid"></div>
-
-  </div>
-</section>
-
-    <section id="about" class="about section-padding" style="background: #1B291D; border-radius: 12px; width: 90%; margin-inline: 5%">
-        <div class="container reveal">
-            <div class="section-title">
-                <h2>About Us</h2>
-            </div>
-            <p>Founded in 2025.</p>
-            <p>Symbolizing sophistication and timeless beauty.</p>
-            <img src="images/bvllogo/Asset1.png" style="width: 150px; opacity: 0.8; margin-top: 30px;" alt="Signature">
+        
+        <div class="footer">
+            <p>جميع الحقوق محفوظة &copy; 2026 BILLAVILUXE</p>
         </div>
-    </section>
-       
-    <section id="testimonials" class="testimonials section-padding">
-        <div class="container">
-            <div class="section-title reveal">
-                <span>Loved by You</span>
-                <h2>Customer Reviews</h2>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"The best lipstick I have ever purchased. The texture is so smooth and lasts all day!"</p>
-                    <h4>- Sara M.</h4>
-                </div>
-                <div class="testimonial-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"التغليف فاخر جداً والمنتجات جودتها عالية.    " داكشي زوين تبارك الله ".</p>
-                    <h4>- Amina K.</h4>
-                </div>
-                <div class="testimonial-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"Truly a premium experience. The scrub changed my skin routine."</p>
-                    <h4>- Wiam b.</h4>
-                </div>
-                <div class="testimonial-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"شكرا ليكم بزااف ، خديت العكر الفاسي ك تجربة وفعلا جا مع البشرة ديالي "</p>
-                    <h4>- saida A.</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about section-padding" style=" border-radius: 12px 12px 0 0">
-        <div class="container reveal">
-            <div class="section-title">
-                <h2>Our Heritage</h2>
-            </div>
-            <p>Founded in 2025, BILLAVILUXE stands at the intersection of modern science and timeless beauty.</p>
-            <p>نحن نؤمن بأن الجمال هو انعكاس للثقة الداخلية، لذا نقدم منتجات تعزز جمالك الطبيعي.</p>
-            <img src="images/bvllogo/Asset1.png" style="width: 150px; opacity: 0.8; margin-top: 30px;" alt="Signature">
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>We do</h3>
-                    <p>Premium beauty products for the modern, sophisticated individual. Designed in Morocco, loved worldwide.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
-                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit">JOIN</button>
-                    </form>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <p>Email: contact@billaviluxe.com</p>
-                    <p>whatsapp: +212 630-339238</p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/BILLAVILUXE" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/BILLAVILUXE/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/212630339238" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Billaviluxe. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle" style="color: var(--gold); font-size: 1.5rem;"></i>
-        <span style="color: white; font-size: 0.9rem; margin-left: 10px;">Product added to cart</span>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuBtn = document.getElementById('menuBtn');
-            const mainNav = document.getElementById('mainNav');
-            const header = document.getElementById('mainHeader');
-
-            // Mobile Menu Toggle
-            if (menuBtn && mainNav) {
-                menuBtn.addEventListener('click', () => {
-                    mainNav.classList.toggle('active');
-                    menuBtn.innerHTML = mainNav.classList.contains('active') 
-                        ? '<i class="fas fa-times"></i>' 
-                        : '<i class="fas fa-bars"></i>';
-                });
-            }
-
-            // Close mobile menu on link click
-            document.querySelectorAll('.main-nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 768 && mainNav.classList.contains('active')) {
-                        mainNav.classList.remove('active');
-                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            });
-
-            // Header Scroll Effect
-            window.addEventListener('scroll', () => {
-                // تفعيل الانيميشن عند السكرول (من الكود الأول)
-                revealOnScroll();
-                // تأثير الهيدر
-                if(header) {
-                    header.classList.toggle('scrolled', window.scrollY > 20);
-                }
-            });
-
-            // Initialize header state
-            if(header) header.classList.toggle('scrolled', window.scrollY > 20);
-
-            // Cart functionality (Script from Code 2)
-            let cartCount = 0;
-            const cartElements = document.querySelectorAll('.cart-count');
-            
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    cartCount++;
-                    cartElements.forEach(element => {
-                        element.textContent = cartCount;
-                        element.style.transform = 'scale(1.3)';
-                        setTimeout(() => element.style.transform = 'scale(1)', 300);
-                    });
-                    
-                    // منطق التوست من الكود الثاني
-                    const toast = document.getElementById('toast');
-                    // السكريبت الثاني يبحث عن span داخل التوست لتغيير النص، هذا متوافق مع الـ HTML أعلاه
-                    const productName = this.closest('.product-card').querySelector('h3').textContent;
-                    toast.querySelector('span').textContent = `${productName} added to cart`;
-                    
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 3000);
-                });
-            });
-
-            // Form submission (Script from Code 2)
-            document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will contact you soon.');
-                this.reset();
-            });
-
-            // Video Logic (Script from Code 2)
-            const bgVideo = document.getElementById('bg-video');
-            
-            if (bgVideo) {
-                function loadSettings() {
-                    // جلب حالة الصوت المحفوظة
-                    const savedMuted = localStorage.getItem('videoMuted');
-                    if (savedMuted !== null) {
-                        bgVideo.muted = savedMuted === 'true';
-                    } else {
-                        bgVideo.muted = true;
-                        localStorage.setItem('videoMuted', 'true');
-                    }
-                    bgVideo.src = 'videos/video_2025-06-01_16-26-45.mp4';
-                }
+        // إضافة تأثيرات تفاعلية إضافية عند النقر على الأزرار
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // إضافة تأثير ضغط عند النقر
+                this.style.transform = 'scale(0.95)';
                 
-                loadSettings();
-                
-                bgVideo.addEventListener('click', function() {
-                    bgVideo.muted = !bgVideo.muted;
-                    localStorage.setItem('videoMuted', bgVideo.muted.toString());
-                    showMessage(bgVideo.muted ? "الصوت: مطفأ" : "الصوت: مفعّل");
-                });
-            }
-            
-            function showMessage(text) {
-                // إنشاء رسالة مؤقتة للفيديو كما في الكود الثاني
-                const message = document.createElement('div');
-                message.textContent = text;
-                message.style.position = 'fixed';
-                message.style.top = '100px'; // تم التعديل قليلاً لتناسب الهيدر
-                message.style.left = '50%';
-                message.style.transform = 'translateX(-50%)';
-                message.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-                message.style.color = 'white';
-                message.style.padding = '10px 20px';
-                message.style.borderRadius = '20px';
-                message.style.zIndex = '2000';
-                message.style.fontSize = '16px';
-                message.style.transition = 'opacity 0.5s';
-                
-                document.body.appendChild(message);
-                
+                // إعادة الحجم الطبيعي بعد فترة قصيرة
                 setTimeout(() => {
-                    message.style.opacity = '0';
-                    setTimeout(() => {
-                        if(message.parentNode) document.body.removeChild(message);
-                    }, 500);
-                }, 2000);
-            }
-
-            // Scroll Reveal Animation (من الكود الأول للحفاظ على الجمالية)
-            function revealOnScroll() {
-                var reveals = document.querySelectorAll(".reveal");
-                for (var i = 0; i < reveals.length; i++) {
-                    var windowHeight = window.innerHeight;
-                    var elementTop = reveals[i].getBoundingClientRect().top;
-                    var elementVisible = 150;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveals[i].classList.add("active");
-                    }
-                }
-            }
-            revealOnScroll();
-        });
-    </script>
-    <script src="cart.js"></script>
-    
-    
-    
-    
-    
-    
-     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Mobile Menu Logic
-            const menuBtn = document.getElementById('menuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            if (menuBtn && mainNav) {
-                menuBtn.addEventListener('click', () => {
-                    mainNav.classList.toggle('active');
-                    menuBtn.innerHTML = mainNav.classList.contains('active') 
-                        ? '<i class="fas fa-times"></i>' 
-                        : '<i class="fas fa-bars"></i>';
-                });
+                    this.style.transform = '';
+                }, 200);
                 
-                // Close menu when clicking links
-                document.querySelectorAll('.main-nav a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mainNav.classList.remove('active');
-                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    });
-                });
-            }
-
-            // 2. Header Scroll Effect
-            const header = document.getElementById('mainHeader');
-            const handleScroll = () => {
-                if(header) header.classList.toggle('scrolled', window.scrollY > 20);
-                revealOnScroll();
-            };
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Init on load
-
-            // 3. Scroll Reveal Animation
-            function revealOnScroll() {
-                var reveals = document.querySelectorAll(".reveal");
-                for (var i = 0; i < reveals.length; i++) {
-                    var windowHeight = window.innerHeight;
-                    var elementTop = reveals[i].getBoundingClientRect().top;
-                    var elementVisible = 150;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveals[i].classList.add("active");
-                    }
-                }
-            }
-
-            // 4. Video Sound Logic
-            const bgVideo = document.getElementById('bg-video');
-            if (bgVideo) {
-                // Ensure video plays
-                bgVideo.play().catch(e => console.log("Autoplay blocked usually requires mute"));
-                
-                // Toggle mute on click
-                bgVideo.addEventListener('click', function() {
-                    bgVideo.muted = !bgVideo.muted;
-                    showMessage(bgVideo.muted ? "الصوت: مطفأ" : "الصوت: مفعّل");
-                });
-            }
-
-            // Helper to show video messages
-            function showMessage(text) {
-                const msg = document.createElement('div');
-                msg.textContent = text;
-                Object.assign(msg.style, {
-                    position: 'fixed', top: '100px', left: '50%', transform: 'translateX(-50%)',
-                    backgroundColor: 'rgba(0,0,0,0.8)', color: 'white', padding: '10px 20px',
-                    borderRadius: '20px', zIndex: '2000', transition: 'opacity 0.5s'
-                });
-                document.body.appendChild(msg);
-                setTimeout(() => { msg.style.opacity = '0'; setTimeout(() => msg.remove(), 500); }, 2000);
-            }
-        });
-    </script>
-    <script>
-        // Header scroll effect
-        const header = document.getElementById('mainHeader');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Initialize scroll state
-        if (window.scrollY > 20) header.classList.add('scrolled');
-        
-        // Add to cart functionality with toast notification
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const cartCounts = document.querySelectorAll('.cart-count');
-                const productName = this.closest('.product-card').querySelector('h3').textContent;
-                
-                // Update cart count
-                cartCounts.forEach(cartCount => {
-                    let count = parseInt(cartCount.textContent);
-                    cartCount.textContent = count + 1;
-                    
-                    // Add animation
-                    cartCount.style.transform = 'scale(1.3)';
-                    setTimeout(() => {
-                        cartCount.style.transform = 'scale(1)';
-                    }, 300);
-                });
-                
-                // Show toast notification
-                const toast = document.getElementById('toast');
-                toast.querySelector('span').textContent = `${productName} added to cart`;
-                toast.classList.add('show');
-                
-                // Hide toast after 3 seconds
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-                
-                // In a real implementation, you would add the product to cart here
+                // في حالة حقيقية، سينتقل المتصفح تلقائياً إلى الرابط
+                // ولكننا نضيف رسالة تأكيد هنا للعرض التوضيحي
+                const pageName = this.classList.contains('btn-beauty') ? "منتجات التجميل" : "الملابس الفاخرة";
+                console.log(`جارٍ التوجيه إلى صفحة ${pageName}...`);
             });
         });
         
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will contact you soon.');
-            this.reset();
+        // تأثير إضافي للترحيب عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            const welcomeText = document.querySelector('.fade-text');
+            const brandName = document.querySelector('.brand-name');
+            
+            // إعادة تشغيل الأنيميشن
+            welcomeText.style.animation = 'none';
+            brandName.style.animation = 'none';
+            
+            setTimeout(() => {
+                welcomeText.style.animation = '';
+                brandName.style.animation = '';
+            }, 10);
         });
     </script>
-
-       <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const bgVideo = document.getElementById('bg-video');
-            
-            // تحقق مما إذا كان هناك إعدادات محفوظة
-            function loadSettings() {
-                // جلب حالة الصوت المحفوظة (مُفعّل أو لا)
-                const savedMuted = localStorage.getItem('videoMuted');
-                
-                // إذا كانت هناك قيمة محفوظة، نطبقها
-                if (savedMuted !== null) {
-                    bgVideo.muted = savedMuted === 'true';
-                } else {
-                    // الحالة الافتراضية: بدون صوت
-                    bgVideo.muted = true;
-                    localStorage.setItem('videoMuted', 'true');
-                }
-                
-                // إعداد مصدر الفيديو (استبدل بمسار الفيديو الخاص بك)
-                bgVideo.src = 'videos/video_2025-06-01_16-26-45.mp4';
-            }
-            
-            // تحميل الإعدادات عند بدء الصفحة
-            loadSettings();
-            
-            // تفاعل النقر على الفيديو لتغيير حالة الصوت
-            bgVideo.addEventListener('click', function() {
-                // تبديل حالة الصوت
-                bgVideo.muted = !bgVideo.muted;
-                
-                // حفظ الحالة الجديدة في localStorage
-                localStorage.setItem('videoMuted', bgVideo.muted.toString());
-                
-                // عرض رسالة مؤقتة
-                showMessage(bgVideo.muted ? "الصوت: مطفأ" : "الصوت: مفعّل");
-            });
-            
-            // وظيفة لعرض رسالة مؤقتة
-            function showMessage(text) {
-                const message = document.createElement('div');
-                message.textContent = text;
-                message.style.position = 'fixed';
-                message.style.top = '20px';
-                message.style.left = '50%';
-                message.style.transform = 'translateX(-50%)';
-                message.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-                message.style.color = 'white';
-                message.style.padding = '10px 20px';
-                message.style.borderRadius = '20px';
-                message.style.zIndex = '100';
-                message.style.fontSize = '16px';
-                message.style.transition = 'opacity 0.5s';
-                
-                document.body.appendChild(message);
-                
-                // إخفاء الرسالة بعد 2 ثانية
-                setTimeout(() => {
-                    message.style.opacity = '0';
-                    setTimeout(() => {
-                        document.body.removeChild(message);
-                    }, 500);
-                }, 2000);
-            }
-        });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // 1. تسجيل الـ Service Worker (لجعل التطبيق قابل للتثبيت)
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-            .then(() => console.log("Service Worker Registered"))
-            .catch(err => console.log("Service Worker Failed", err));
-        }
-
-        // 2. منطق القائمة الجانبية (Mobile Menu)
-        const menuBtn = document.getElementById('menuBtn');
-        const mainNav = document.getElementById('mainNav');
-        if (menuBtn && mainNav) {
-            menuBtn.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-                menuBtn.innerHTML = mainNav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-        }
-
-        // 3. التحكم في الفيديو (Mute/Unmute)
-        const bgVideo = document.getElementById('bg-video');
-        if (bgVideo) {
-            bgVideo.addEventListener('click', () => {
-                bgVideo.muted = !bgVideo.muted;
-                const msg = bgVideo.muted ? "الصوت: مطفأ" : "الصوت: مفعّل";
-                showToast(msg); // سنستخدم التوست لإظهار حالة الصوت
-            });
-        }
-
-        // 4. وظيفة إظهار التنبيهات (Toast)
-        function showToast(text) {
-            const toast = document.getElementById('toast');
-            if (toast) {
-                toast.querySelector('span').textContent = text;
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 3000);
-            }
-        }
-
-        // 5. تحديث العربة عند الضغط على إضافة
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const productName = this.closest('.product-card').querySelector('h3').textContent;
-                const counts = document.querySelectorAll('.cart-count');
-                counts.forEach(c => c.textContent = parseInt(c.textContent) + 1);
-                showToast(`${productName} added to cart`);
-            });
-        });
-    });
-</script>
-
 </body>
 </html>
