@@ -111,6 +111,77 @@ document.addEventListener('DOMContentLoaded', function() {
     '• Ravive l’éclat du visage et lui donne une luminosité rosée naturelle',
 ]
 },
+    
+{
+id: '6',
+name: 'Serum Niacinamide',
+price:  189.00,
+image: 'images/mockup-gray-serum-50ml-main.png',
+gallery: [
+'images/mockup-gray-serum-50ml-left.png',
+'images/mockup-gray-serum-50ml-right.png',
+'images/mockup-gray-serum-50ml-main.png',
+],
+description: `Serum Niacinamide
+
+'Sérum avancé conçu pour améliorer l’apparence de la peau et unifier son teint. Il contient de la niacinamide à une concentration efficace, reconnue pour ses propriétés aidant à réduire l’apparence des pores et à contrôler l’excès de sébum, ce qui contribue à améliorer la texture de la peau et à diminuer les imperfections. Avec une utilisation régulière, il offre à la peau un éclat naturel ainsi qu’un aspect plus sain et plus pur. ✨
+`,
+
+INGREDIENTS: [
+'• Niacinamide',
+'• Extrait d'Aloe Vera',
+'• Vitamine E',
+'• Acide Hyaluronique',
+]
+},
+    
+{
+id: '7',
+name: 'COLLAGEN MARINE',
+price:  249.00,
+image: 'mockup-capsule-white-2-main.png',
+gallery: [
+'images/mockup-capsule-white-2-left.png',
+'images/mockup-capsule-white-2-right.png',
+'images/mockup-capsule-white-2-main.png',
+],
+description: `COLLAGEN MARINE
+
+'Complément alimentaire haut de gamme à base de collagène marin hydrolysé, facilement absorbé, enrichi en vitamine C pour favoriser la production naturelle de collagène. Il aide à améliorer l’élasticité de la peau, à renforcer les cheveux et les ongles, à soutenir la santé des articulations et à réduire les signes du vieillissement. Une formule pure, au goût naturel et sucrée à la stévia, idéale pour prendre soin de la beauté de l’intérieur. ✨
+`,
+
+INGREDIENTS: [
+'• Collagène marin hydrolysé ',
+'• Vitamine C (Acide ascorbique)',
+'• Gomme arabique (support)',
+'•Arôme naturel (selon la version)',
+'•Édulcorant naturel : Stevia',
+]
+},
+    
+{
+id: '8',
+name: 'CREME RETINOLE',
+price:  129.00,
+image: 'mockup-white-oil-60ml-main.png',
+gallery: [
+'images/mockup-white-oil-60ml-left.png',
+'images/mockup-white-oil-60ml-right.png',
+'images/mockup-white-oil-60ml-main.png',
+],
+description: `CREME RETINOLE
+
+'La crème au rétinol est un produit de soin de la peau conçu pour améliorer l’apparence de la peau et favoriser son renouvellement de manière efficace. Elle contient une forte concentration de rétinol, reconnu pour sa capacité à stimuler le renouvellement des cellules cutanées et à réduire l’apparence des ridules et des rides. La crème aide également à améliorer la texture de la peau et à unifier son teint, contribuant ainsi à une peau plus jeune et plus éclatante. ✨
+`,
+
+INGREDIENTS: [
+'• Émulsion de cire ',
+'• Gel d'aloe Vera',
+'• Rétinol',
+'•Acide lactique',
+'•Vitamine C',
+]
+},
   ];
   
   // ======================
