@@ -264,6 +264,21 @@
     height: 100%;
     object-fit: cover;
 }
+#bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 0;
+        }
     </style>
 </head>
 <body>
@@ -282,7 +297,7 @@
             <a href="beautypdc.html" class="btn btn-beauty">
               
     <div class="btn-video">
-        <video src="Videos/iny.mp4" 
+        <video src="videos/iny.mp4" 
                autoplay 
                muted 
                loop 
@@ -293,7 +308,8 @@
             <a href="clthpdc.html" class="btn btn-clothing">
 
     <div class="btn-video">
-        <video src="Videos/ink.mp4"    autoplay 
+        <video src="Videos/Video_Generation_Focused_on_Watch.mp4" 
+               autoplay 
                muted 
                loop 
                playsinline>
@@ -340,6 +356,7 @@
                 brandName.style.animation = '';
             }, 10);
         });
+        
     </script>
 </body>
 </html>
