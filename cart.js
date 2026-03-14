@@ -139,7 +139,7 @@ INGREDIENTS: [
 id: '7',
 name: 'COLLAGEN MARINE',
 price:  249.00,
-image: 'mockup-capsule-white-2-main.png',
+image: 'images/mockup-capsule-white-2-main.png',
 gallery: [
 'images/mockup-capsule-white-2-left.png',
 'images/mockup-capsule-white-2-right.png',
@@ -163,7 +163,7 @@ INGREDIENTS: [
 id: '8',
 name: 'CREME RETINOLE',
 price:  129.00,
-image: 'mockup-white-oil-60ml-main.png',
+image: 'images/mockup-white-oil-60ml-main.png',
 gallery: [
 'images/mockup-white-oil-60ml-left.png',
 'images/mockup-white-oil-60ml-right.png',
