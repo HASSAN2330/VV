@@ -129,7 +129,7 @@ description: `Serum Niacinamide
 
 INGREDIENTS: [
 '• Niacinamide',
-'• Extrait d'Aloe Vera',
+'• Extrait d Aloe Vera',
 '• Vitamine E',
 '• Acide Hyaluronique',
 ]
@@ -176,7 +176,7 @@ description: `CREME RETINOLE
 
 INGREDIENTS: [
 '• Émulsion de cire ',
-'• Gel d'aloe Vera',
+'• Gel d aloe Vera',
 '• Rétinol',
 '•Acide lactique',
 '•Vitamine C',
